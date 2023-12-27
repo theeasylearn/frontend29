@@ -3,3 +3,6 @@
 2) create html page that has numeric list all nation name which has played football world cup. 
 
 3) create html page that has two differnt div tag. each div should have 3 stories. each div should have differnt type of stories. for example inspiration stories. 2nd div tag spiritual stories. 
+
+4) create mans worlds cup 2023 point table using table tag in html. 
+
