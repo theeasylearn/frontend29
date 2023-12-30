@@ -11,10 +11,18 @@
     <br>
     <br>
     <form action="lesson8.html" method="post">
-        <table  width="40%" align="center" cellpadding="10">
+        <table  width="50%" align="center" cellpadding="10">
             <tr>
                 <td width="35%">Enter Name : </td>
                 <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>
+                    Enter number : 
+                </td>
+                <td>
+                    <input type="number">
+                </td>
             </tr>
             <tr>
                 <td>Enter Email :</td>
@@ -29,9 +37,57 @@
                 <td><input type="password"></td>
             </tr>
             <tr>
-                <td width="90%"></td>
+                <td>
+                    selct gender :
+                </td>
+                <td>
+                    <input type="radio" name="gender">male <br>
+                    <input type="radio" name="gender">female
+                </td>
                 
-                <td  align="right"><button type="submit">Submit</button></td>
+            </tr>
+            <tr>
+                <td>
+                    select language :
+                </td>
+                <td width="60%">
+                    <input type="checkbox" name="HTML">HTML 
+                    <input type="checkbox" name="css">css
+                    <input type="checkbox" name="js">js
+                    <input type="checkbox" name="react">react
+                    <input type="checkbox" name="node">node
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    select file :
+                </td>
+                <td>
+                    <input type="file">
+                </td>
+            </tr>
+            <tr>
+                <td>selct city : </td>
+                <td>
+                    <select>
+                        <option selected>select any one </option>
+                        <option value="1">city 1</option>
+                        <option value="2">city 2</option>
+                        <option value="3">city 3</option>
+                        <option value="4">city 4</option>
+                        <option value="5">city 5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>message :</td>
+                <td><textarea  cols="20" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                
+                
+                <td colspan="2" align="center"><button type="submit">Submit</button></td>
             </tr>
         </table>
     </form>
