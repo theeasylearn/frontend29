@@ -1,95 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lesson9</title>
 </head>
+
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <form action="lesson8.html" method="post">
-        <table  width="50%" align="center" cellpadding="10">
+    <h1 align="center">Register with us</h1>
+    <hr />
+    <form action="lesson8.html" method="post" enctype="multipart/form-data">
+        <table width="50%" align="center" cellpadding="10" border="2">
             <tr>
-                <td width="35%">Enter Name : </td>
-                <td><input type="text"></td>
+                <td width="35%">Enter Name : <font color='red'>*</font></td>
+                <td><input type="text" name="name" required /></td>
             </tr>
             <tr>
                 <td>
-                    Enter number : 
+                    Enter mobile number :
                 </td>
                 <td>
-                    <input type="number">
+                    <input type="number" name="mobile" required />
                 </td>
             </tr>
             <tr>
                 <td>Enter Email :</td>
-                <td><input type="email"></td>
+                <td><input type="email" name="email" required /></td>
+            </tr>
+            <tr>
+                <td>Select birth date</td>
+                <td>
+                    <input type="date" name="dob" required />
+                </td>
             </tr>
             <tr>
                 <td>Enter password : </td>
-                <td><input type="password"></td>
+                <td><input type="password" name="password" required /></td>
             </tr>
             <tr>
                 <td>Enter Confirm password : </td>
-                <td><input type="password"></td>
+                <td><input type="password" name="name2" required /></td>
             </tr>
             <tr>
-                <td>
-                    selct gender :
+                <td valign="top">
+                    select gender :
                 </td>
                 <td>
-                    <input type="radio" name="gender">male <br>
-                    <input type="radio" name="gender">female
+                    <label for="male">
+                        <input id="male" type="radio" name="gender" value="1" />male
+                    </label><br>
+                    <label for="female">
+                        <input id="female" type="radio" name="gender" value="0" />female
+                    </label>
                 </td>
-                
             </tr>
             <tr>
-                <td>
+                <td valign="top">
                     select language :
                 </td>
                 <td width="60%">
-                    <input type="checkbox" name="HTML">HTML 
-                    <input type="checkbox" name="css">css
-                    <input type="checkbox" name="js">js
-                    <input type="checkbox" name="react">react
-                    <input type="checkbox" name="node">node
-                    
+                    <table border="1" cellspacing="0" cellpadding="8" style="width: 100%;">
+                        <tr>
+                            <td>
+                                <label for="htmlCheckbox">
+                                    <input type="checkbox" id="htmlCheckbox" name="HTML" />
+                                    HTML
+                                </label>
+                            </td>
+                            <td>
+                                <label for="cssCheckbox">
+                                    <input type="checkbox" id="cssCheckbox" name="css" />
+                                    CSS
+                                </label>
+                            </td>
+                            <td>
+                                <label for="jsCheckbox">
+                                    <input type="checkbox" id="jsCheckbox" name="js" />
+                                    JavaScript
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="reactCheckbox">
+                                    <input type="checkbox" id="reactCheckbox" name="react" />
+                                    React
+                                </label>
+                            </td>
+                            <td colspan="2">
+                                <label for="nodeCheckbox">
+                                    <input type="checkbox" id="nodeCheckbox" name="node" />
+                                    Node.js
+                                </label>
+                            </td>
+                        </tr>
+                    </table>    
                 </td>
             </tr>
             <tr>
                 <td>
-                    select file :
+                    select photo :
                 </td>
                 <td>
-                    <input type="file">
+                    <input type="file" name="photo" required accept="image/*" />
                 </td>
             </tr>
             <tr>
                 <td>selct city : </td>
                 <td>
-                    <select>
-                        <option selected>select any one </option>
-                        <option value="1">city 1</option>
-                        <option value="2">city 2</option>
-                        <option value="3">city 3</option>
-                        <option value="4">city 4</option>
-                        <option value="5">city 5</option>
+                    <select name="city" required>
+                        <option value="">Select city</option>
+                        <option value="1">Ahmedabad</option>
+                        <option value="2">Surat</option>
+                        <option value="3">Vadodara</option>
+                        <option value="4">Rajkot</option>
+                        <option value="5">Bhavnagar</option>
+                        <option value="6">Jamnagar</option>
+                        <option value="7">Anand</option>
+                        <option value="8">Nadiad</option>
+                        <option value="9">Gandhinagar</option>
+                        <option value="10">Junagadh</option>
+                        <option value="11">Surendranagar</option>
+                        <option value="12">Porbandar</option>
+                        <option value="13">Bharuch</option>
+                        <option value="14">Gandhidham</option>
+                        <option value="15">Veraval</option>
+                        <option value="16">Anjar</option>
+                        <option value="17">Bhuj</option>
+                        <option value="18">Ankleshwar</option>
+                        <option value="19">Valsad</option>
+                        <option value="20">Vapi</option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <td>message :</td>
-                <td><textarea  cols="20" rows="3"></textarea></td>
+                <td valign="top">message :</td>
+                <td><textarea cols="20" rows="3" name="message"></textarea></td>
             </tr>
             <tr>
-                
-                
-                <td colspan="2" align="center"><button type="submit">Submit</button></td>
+                <td colspan="2" align="center">
+                    <input type="submit" value="register" />
+                </td>
             </tr>
         </table>
     </form>
 </body>
+
 </html>

@@ -6,3 +6,8 @@
 
 4) create mans worlds cup 2023 point table using table tag in html. 
 
+5) create login page 
+
+6) create change password page. 
+
+7) create bus ticket page (reference gsrtc)
