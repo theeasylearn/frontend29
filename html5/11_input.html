@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>working with input in html 5</h1>
+    <form method="post" action="success.html" enctype="multipart/form-data" novalidate autocomplete="off">
+        <table border="2" align="center" cellpadding="10" cellspacing="5">
+            <tr>
+                <td>
+                    <label for="email">Email address</label>
+                </td>
+                <td>
+                    <input type="email" name="email" id="email" required   />
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="dob">Birth date</label>
+                </td>
+                <td>
+                    <input type="datetime-local" name="dob" id="dob" autofocus>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="anniversary_date">
+                        Anniversary Date
+                    </label>
+                </td>
+                <td>
+                    <input type="date" name="anniversary_date" id="anniversary_date">
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="free_time"> 
+                        when you are free?
+                    </label>
+                </td>
+                <td>
+                    <input type="time" name="free_time" id="free_time"  />
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="favourite_color">
+                        which is your favourite color?
+                    </label>
+                </td>
+                <td>
+                    <input type="color" name="favourite_color" id="favourite_color">
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="website_address">
+                        what is your website address?
+                    </label>
+                </td>
+                <td>
+                    <input type="url" name="website_address" id="website_address">
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="contact_no">
+                        what is your contact no?
+                    </label>
+                </td>
+                <td>
+                    <input type="tel" name="contact_no" id="contact_no">
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <label for="aadhar_card">
+                        select your aadhar card
+                    </label>
+                </td>
+                <td>
+                    <input type="file" name="aadhar_card" id="aadhar_card" accept="application/pdf" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="register" />
+                    <input type="button" value="do nothing" />
+                    <input type="reset" value="clear all" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
