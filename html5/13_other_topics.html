@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="success.html" enctype="multipart/form-data">
+        <input type="number" name="annual_income" id="annual_income" placeholder="annual income" min="1" max="100000000000" /> <br/>
+        Booking Date <br/>
+        <input type="date" name="booking_date" id="booking_date" min="2024-01-10" required />
+        <br/>
+        select your 5 recent photos 
+        <br/>
+        <input type="file" name="photo" accept="image/*" multiple />
+        <br/>
+        Enter pan card no 
+        <br/>
+        <input type="text" name="pan_card" id="pan_card"  pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" />
+        <br/>
+        <input type="submit" name="submit" id="submit" value="submit form" />
+    </form>
+</body>
+</html>
