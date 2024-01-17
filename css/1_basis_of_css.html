@@ -7,6 +7,14 @@
     <title>Document</title>
     <style>
         /* internal stylesheet */
+
+        /* universal selector (style applies to all html tag) */
+        * 
+        {
+            margin: 0px;
+            padding:0px;
+            letter-spacing: 1px;
+        }
         body 
         {
             background-color: beige;
@@ -23,6 +31,10 @@
         {
             border: 2px solid brown;
             margin:10px;
+            box-shadow: 5px 5px 5px gray;
+            background-image: url('images/books.png');
+            background-repeat: no-repeat;
+            background-position: center center;
         }
         p 
         {
@@ -41,33 +53,37 @@
             margin: 10px;
             background-color: blanchedalmond;
         }
+        h1 
+        {
+            text-shadow: 5px 5px 5px yellow;
+        }
     </style>
 </head>
 
 <body>
     <section>
         <article>
-            <header>
-                <h1>Sample heading</h1>
-            </header>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi enim ratione quae esse alias veniam atque
-                quos aut? Dignissimos error in commodi doloribus iste praesentium necessitatibus consequatur non, itaque
-                autem explicabo libero illo laudantium distinctio ipsa perspiciatis. Cumque numquam nisi illo non ullam
-                vitae, doloremque natus harum sed totam dolores quibusdam voluptas. Magni molestias aliquam ratione et
-                assumenda iste eligendi modi quo porro laboriosam necessitatibus suscipit repellendus amet quis nisi
-                numquam, sint vel doloribus illo. Culpa eveniet fugiat iure est quibusdam, quis suscipit exercitationem
-                voluptas? Iure repellendus, natus ratione est libero blanditiis temporibus iste corrupti, inventore
-                doloremque commodi totam itaque?</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi enim ratione quae esse alias veniam atque
-                quos aut? Dignissimos error in commodi doloribus iste praesentium necessitatibus consequatur non, itaque
-                autem explicabo libero illo laudantium distinctio ipsa perspiciatis. Cumque numquam nisi illo non ullam
-                vitae, doloremque natus harum sed totam dolores quibusdam voluptas. Magni molestias aliquam ratione et
-                assumenda iste eligendi modi quo porro laboriosam necessitatibus suscipit repellendus amet quis nisi
-                numquam, sint vel doloribus illo. Culpa eveniet fugiat iure est quibusdam, quis suscipit exercitationem
-                voluptas? Iure repellendus, natus ratione est libero blanditiis temporibus iste corrupti, inventore
-                doloremque commodi totam itaque?</p>
+                <header>
+                    <h1>Sample heading</h1>
+                </header>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi enim ratione quae esse alias veniam atque
+                    quos aut? Dignissimos error in commodi doloribus iste praesentium necessitatibus consequatur non, itaque
+                    autem explicabo libero illo laudantium distinctio ipsa perspiciatis. Cumque numquam nisi illo non ullam
+                    vitae, doloremque natus harum sed totam dolores quibusdam voluptas. Magni molestias aliquam ratione et
+                    assumenda iste eligendi modi quo porro laboriosam necessitatibus suscipit repellendus amet quis nisi
+                    numquam, sint vel doloribus illo. Culpa eveniet fugiat iure est quibusdam, quis suscipit exercitationem
+                    voluptas? Iure repellendus, natus ratione est libero blanditiis temporibus iste corrupti, inventore
+                    doloremque commodi totam itaque?</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi enim ratione quae esse alias veniam atque
+                    quos aut? Dignissimos error in commodi doloribus iste praesentium necessitatibus consequatur non, itaque
+                    autem explicabo libero illo laudantium distinctio ipsa perspiciatis. Cumque numquam nisi illo non ullam
+                    vitae, doloremque natus harum sed totam dolores quibusdam voluptas. Magni molestias aliquam ratione et
+                    assumenda iste eligendi modi quo porro laboriosam necessitatibus suscipit repellendus amet quis nisi
+                    numquam, sint vel doloribus illo. Culpa eveniet fugiat iure est quibusdam, quis suscipit exercitationem
+                    voluptas? Iure repellendus, natus ratione est libero blanditiis temporibus iste corrupti, inventore
+                    doloremque commodi totam itaque?</p>
                 <footer>
-                    <p>Written by :- Ankit Patel</p>
+                <p>Written by :- Ankit Patel</p>
                 </footer>
         </article>
         <article>
