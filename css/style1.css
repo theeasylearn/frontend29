@@ -1,0 +1,52 @@
+/* type selector */
+body 
+{
+    background-color: #fff1d0;
+}
+
+/* universal selector */
+*
+{
+    margin:0px;
+    padding:0px;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+div 
+{
+    display: flex;
+    gap: 10px;
+}
+
+/* class selector style  */
+.news-p
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    text-indent: 50px;
+}
+.event-p 
+{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+}
+.news-p, .event-p
+{
+    padding: 10px;
+    /* border-radius: 20px; */
+}
+.news 
+{
+    background-color: #feb775;
+}
+.events 
+{
+    background-color: #AF371F;
+}
+.news, .events
+{
+    padding:10px;
+    height: 500px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
