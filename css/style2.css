@@ -1,0 +1,41 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+body 
+{
+    background-color: cornsilk;
+}
+#site-header 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fdf8f8;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+ul 
+{
+    list-style-type: none;
+    display: flex;
+}
+a 
+{
+    padding:10px;
+}
+#page 
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    gap: 10px;
+}
+article
+{
+    border: 1px solid black;
+    width: calc(25% - 10px);
+    box-sizing: border-box;
+}

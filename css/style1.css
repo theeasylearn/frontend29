@@ -1,7 +1,12 @@
 /* type selector */
+html
+{
+    height: 100vh;
+}
 body 
 {
     background-color: #fff1d0;
+    height: 100%;
 }
 
 /* universal selector */
@@ -16,6 +21,7 @@ div
 {
     display: flex;
     gap: 10px;
+    height: calc(100% - 50px);
 }
 
 /* class selector style  */
@@ -33,20 +39,26 @@ div
 .news-p, .event-p
 {
     padding: 10px;
-    /* border-radius: 20px; */
 }
 .news 
 {
     background-color: #feb775;
+    border-radius: 20px;
 }
 .events 
 {
     background-color: #AF371F;
+    border-radius: 20px;
 }
 .news, .events
 {
     padding:10px;
-    height: 500px;
+    height: 100%;
     overflow: scroll;
     scrollbar-width: none;
 }
+/* For WebKit-based browsers like Chrome */
+.news::-webkit-scrollbar, .events::-webkit-scrollbar {
+    display: none;
+  }
+  
