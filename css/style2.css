@@ -1,9 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab:wght@500&display=swap');
 *
 {
     margin: 0px;
     padding: 0px;
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 
+{
+    font-family: 'Roboto Slab', serif;
+}
+h1 
+{
+    font-size: 1.6rem;
+}
+h2 
+{
+    font-size: 1.4rem;
+}
+h3 
+{
+    font-size:1.2rem;
+}
+
+#page>article>header 
+{
+    background-color: brown;
+    color:white;
+    padding:10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#page>article>p 
+{
+    padding:10px;
 }
 body 
 {
@@ -27,16 +59,34 @@ body
     list-style-type: none;
     display: flex;
 }
-#site-header>nav>ul>li>a 
+#site-header>nav>ul>li>a:link, #site-header>nav>ul>li>a:visited 
 {
     padding:10px;
     text-decoration: none;
-    background-color: brown;
-    color:white;
     margin-right:10px;
     text-transform: uppercase;
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: brown;
+}
+#site-header>nav>ul>li>a:link 
+{
+    color:white;
+}
+#site-header>nav>ul>li>a:visited 
+{
+    color: yellow;
+}
+#site-header>nav>ul>li>a:hover
+{
+    background-color: bisque;
+    color:brown;
+    font-weight: bold;
+}
+#site-header>nav>ul>li>a:active 
+{
+    background-color: yellow;
+    color:red;
 }
 #page 
 {
@@ -50,7 +100,12 @@ body
     border: 1px solid black;
     width: calc(25% - 10px);
     box-sizing: border-box;
-    padding:10px;
+}
+
+#page>article:hover 
+{
+    background-color: white;
+    box-shadow: 5px 5px 5px gainsboro;
 }
 #page>article>p 
 {
