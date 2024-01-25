@@ -6,12 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* font CDN */
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Yeseva+One&display=swap');
         *
         {
             margin:0px;
             padding:0px;
             letter-spacing: 1px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 16px;
         }
+        h1, h2, h3, h4, h5, h6 
+        {
+            font-family: 'Yeseva One', serif;
+        }
+        h1 
+        {
+            font-size: 2rem;
+        }
+        h2 
+        {
+            font-size: 1.75rem;
+        }
+        h3 
+        {
+            font-size: 1.5rem;
+        }
+        h4 
+        {
+            font-size: 1.3rem;
+        }
+        body 
+        {
+            background-color: #FFF8E3;
+            color:#A94438;
+        }
+        #news>article 
+        {
+            background-color: #F5EEE6;
+            border:1px solid #A94438;
+            margin-bottom: 20px;
+            width:calc(20% - 10px);
+            box-sizing: border-box;
+        }
+        #news>article>p 
+        {
+            padding:5px 10px;
+            text-align: justify;
+        }
+        #news
+        {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        #news>article>header 
+        {
+            background-color: #A94438;
+            color:white;
+            text-align: center;
+            padding:10px 0px; /* 1st value is used top and bottom 2nd value is used left right*/
+            text-transform: uppercase;
+        }
+
+        #news>article:hover
+        {
+            background-color: #F3D7CA;
+        }
+
         /* ##Device = Desktops ##Screen = 1281px to higher resolution desktop */
         @media (min-width: 1281px) {
             /* code in this block will be applied only if device width>1281 */
@@ -20,28 +82,55 @@
         /* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px*/
         @media (min-width: 1025px) and (max-width: 1280px) {
             /* code in this block will be applied only if device width>1025 and <1280 */
+            #news>article 
+            {
+                width: calc(25% - 10px);
+            }
         }
 
         /* ##Device = Tablets, Ipads (portrait) ##Screen = B/w 768px to 1024px */
         @media (min-width: 768px) and (max-width: 1024px) {
             /* code in this block will be applied only if device width>768 and <1024 */
+            #news>article 
+            {
+                width: calc(33.33% - 10px);
+            }
+            #news>article>p 
+            {
+                font-size: 1.1rem;
+            }
         }
 
         /* ##Device = Low Resolution Tablets,  ##Screen = B/w 481px to 767px */
         @media (min-width: 481px) and (max-width: 767px) {
             /* code in this block will be applied only if device width>481 and <767 */
+            #news>article 
+            {
+                width: calc(50% - 10px);
+            }
+            #news>article>p 
+            {
+                font-size: 1.1rem;
+            }
         }
 
         /*  ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
         @media (min-width: 320px) and (max-width: 480px) {
             /* code in this block will be applied only if device width>320 and <480 */
-
+            #news>article 
+            {
+                width: 100%;
+            }
+            #news>article>p 
+            {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <section>
+    <section id="news">
         <article>
             <header>
                 <h2>Article 1</h2>
