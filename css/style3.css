@@ -63,6 +63,7 @@ body {
 #site-header>nav>ul {
     list-style-type: none;
     display: flex;
+    flex-direction: row;
 }
 
 #site-header>nav>ul>li>a:link,
@@ -138,11 +139,33 @@ body {
     position: fixed;
     bottom: 0px;
     left: 0px;
-    
+    width: 100%;
 }
+
+#mobile {
+    background-color: brown;
+    display: none;
+}
+
+#mobile>li {
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+#mobile>li>a:link,
+#mobile>li>a:visited {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#menu_icon {
+    display: none;
+}
+
 /* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px*/
-@media (min-width: 1025px)
-{
+@media (min-width: 1025px) {
+
     /* code in this block will be applied only if device width>1025 and <1280 */
     #page>article {
         width: calc(25% - 10px);
@@ -151,6 +174,7 @@ body {
 
 /* ##Device = Tablets, Ipads (portrait) ##Screen = B/w 768px to 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
+
     /* code in this block will be applied only if device width>768 and <1024 */
     #page>article {
         width: calc(33.33% - 10px);
@@ -159,6 +183,7 @@ body {
 
 /* ##Device = Low Resolution Tablets,  ##Screen = B/w 481px to 767px */
 @media (min-width: 481px) and (max-width: 767px) {
+
     /* code in this block will be applied only if device width>481 and <767 */
     #page>article {
         width: calc(50% - 10px);
@@ -167,8 +192,22 @@ body {
 
 /*  ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
 @media (min-width: 320px) and (max-width: 480px) {
+
     /* code in this block will be applied only if device width>320 and <480 */
     #page>article {
         width: 100%;
+    }
+
+    #site-header>nav>ul {
+        display: none;
+    }
+
+    #mobile {
+        display: block;
+    }
+
+    #menu_icon {
+        display: inline-block;
+        margin-right: 10px;
     }
 }
