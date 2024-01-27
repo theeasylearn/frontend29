@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab:wght@500&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+#page>article>header {
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#page>article>p {
+    padding: 10px;
+}
+
+body {
+    background-color: cornsilk;
+}
+
+#site-header {
+    /* put header sticky at the top */
+    position: sticky;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: space-between;
+    /* horizontal alignment */
+    align-items: center;
+    /* vertical alignment */
+    background-color: #fdf8f8;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+#site-header>nav>ul {
+    list-style-type: none;
+    display: flex;
+}
+
+#site-header>nav>ul>li>a:link,
+#site-header>nav>ul>li>a:visited {
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 10px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: brown;
+}
+
+#site-header>nav>ul>li>a:link {
+    color: white;
+}
+
+#site-header>nav>ul>li>a:visited {
+    color: yellow;
+}
+
+#site-header>nav>ul>li>a:hover {
+    background-color: bisque;
+    color: brown;
+    font-weight: bold;
+}
+
+#site-header>nav>ul>li>a:active {
+    background-color: yellow;
+    color: red;
+}
+
+#page {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    gap: 10px;
+}
+
+#page>article {
+    border: 1px solid black;
+    width: calc(25% - 10px);
+    box-sizing: border-box;
+}
+
+#page>article:hover {
+    background-color: white;
+    box-shadow: 5px 5px 5px gainsboro;
+}
+
+#page>article>p {
+    text-align: justify;
+}
+
+#page>article>img {
+    /* display img in center of its parent */
+    display: block;
+    margin: auto;
+
+    height: 250px;
+    width: 250px;
+    border-radius: 250px;
+}
+
+#site-footer {
+    background-color: brown;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    
+}
+/* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px*/
+@media (min-width: 1025px)
+{
+    /* code in this block will be applied only if device width>1025 and <1280 */
+    #page>article {
+        width: calc(25% - 10px);
+    }
+}
+
+/* ##Device = Tablets, Ipads (portrait) ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* code in this block will be applied only if device width>768 and <1024 */
+    #page>article {
+        width: calc(33.33% - 10px);
+    }
+}
+
+/* ##Device = Low Resolution Tablets,  ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+    /* code in this block will be applied only if device width>481 and <767 */
+    #page>article {
+        width: calc(50% - 10px);
+    }
+}
+
+/*  ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+    /* code in this block will be applied only if device width>320 and <480 */
+    #page>article {
+        width: 100%;
+    }
+}
