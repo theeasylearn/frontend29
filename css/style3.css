@@ -125,9 +125,7 @@ body {
     /* display img in center of its parent */
     display: block;
     margin: auto;
-
-    height: 250px;
-    width: 250px;
+    width:  calc(100% - 20px);
     border-radius: 250px;
 }
 
@@ -187,6 +185,18 @@ body {
     /* code in this block will be applied only if device width>481 and <767 */
     #page>article {
         width: calc(50% - 10px);
+    }
+    #site-header>nav>ul {
+        display: none;
+    }
+
+    #mobile {
+        display: block;
+    }
+
+    #menu_icon {
+        display: block;
+        margin-right: 10px;
     }
 }
 

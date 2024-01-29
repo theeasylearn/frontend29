@@ -18,7 +18,7 @@
                 <li><a href="https://www.apple.com">Products</a></li>
             </ul>
         </nav>
-        <img src="images/menu.png" id="menu_icon" />
+        <img src="images/menu.png" id="menu_icon" onclick="ShowHideMenu();" />
     </header>
     <ul id="mobile">
         <li><a href="1_basis_of_css.html">Home</a></li>
@@ -91,5 +91,27 @@
     <footer id="site-footer">
         <p>Developed By :- frontend30@theeasylearn.com</p>
     </footer>
+<script>
+    //intially hide mobile menu
+    document.getElementById('mobile').style.display= 'none';
+    //create 
+    var isMenuVisible = false;
+    //create user defined function 
+    function ShowHideMenu()
+    {
+        // alert(isMenuVisible);
+        if(isMenuVisible == false) //menu is currently not visible
+        {
+            //make it visible
+            document.getElementById('mobile').style.display = 'block';
+        }
+        else //menu is currently visible
+        {
+            //make it invisible
+            document.getElementById('mobile').style.display= 'none';
+        }
+        isMenuVisible = !isMenuVisible;
+    }
+</script>
 </body>
 </html>
