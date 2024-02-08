@@ -1,0 +1,22 @@
+1) develop web page which will display 4 stroies in one line for large screen. 3 stories in one line for medium screen. 2 stories in one line for small screen and 1 stories in one line for mobile screen. there should be 20 stories in web page. each story has title, author and image and story.
+
+2) develop web page will will display 3 team members per line for large and medium screen. 2 team members for small screen and 1 team members for mobile screen. there will 6 team members. display team member name, qulification experience and photo
+
+3) develop web page that will display 6 team per line for large screen, 4 team per line for medium screen, 3 team per line on small screen and 1 team per line on mobile screen. there will be 10 teams. display team name and logo 
+
+4) create html table which has all indian batsman name, age, match, run, 50s, 100s and Batting average of current indian team. 
+
+4) create resume using bootstrap grid system and formatting related classes. (do not use table tag at all) 
+https://tinyurl.com/yry2d74p
+
+5) create change password vertical form 
+6) create checkout vertical form for credit card/debit card 
+
+7) create grid form as per below url 
+https://bit.ly/46zYgTX
+
+8) create horizontal form 
+https://bit.ly/3F4wva5
+
+9) create web page that will display 5 products as per the design used in 26_accordion_slider_both_together.html. make sure ids are unique in slider and accordion. 
+
