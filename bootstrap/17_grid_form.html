@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header text-bg-danger">
+                        <h5>Register</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="surname" id="surname"
+                                            placeholder="surname" />
+                                        <label for="surname">Surname</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="Your name" />
+                                        <label for="name">Your name</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="fathername" id="fathername"
+                                            placeholder="" />
+                                        <label for="fathername">Fathername</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <label class="form-label" for="asianCountries">Select an Asian Country:</label>
+                                    <select class="form-select" id="asianCountries" name="asianCountries">
+                                        <option value="afghanistan">Afghanistan</option>
+                                        <option value="armenia">Armenia</option>
+                                        <option value="azerbaijan">Azerbaijan</option>
+                                        <option value="bahrain">Bahrain</option>
+                                        <option value="bangladesh">Bangladesh</option>
+                                        <option value="bhutan">Bhutan</option>
+                                        <option value="brunei">Brunei</option>
+                                        <option value="cambodia">Cambodia</option>
+                                        <option value="china">China</option>
+                                        <option value="cyprus">Cyprus</option>
+                                        <option value="georgia">Georgia</option>
+                                        <option value="india">India</option>
+                                        <option value="indonesia">Indonesia</option>
+                                        <option value="iran">Iran</option>
+                                        <option value="iraq">Iraq</option>
+                                        <option value="israel">Israel</option>
+                                        <option value="japan">Japan</option>
+                                        <option value="jordan">Jordan</option>
+                                        <option value="kazakhstan">Kazakhstan</option>
+                                        <option value="kuwait">Kuwait</option>
+                                        <!-- Add more countries as needed -->
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mt-3">
+                                        <input type="text" name="state" id="state" class="form-control" placeholder="Enter state">
+                                        <label for="state">Enter state</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mt-3">
+                                        <input type="text" name="city" id="city" class="form-control" placeholder="Enter city">
+                                        <label for="city">Enter city</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mt-3">
+                                        <input type="number" name="pincode" id="pincode" class="form-control" placeholder="Enter pincode">
+                                        <label for="pincode">Enter pincode</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                               <div class="col pt-3">
+                                <div class="form-floating">
+                                    <textarea name="address" id="address" class="form-control" placeholder="type your address"></textarea>
+                                    <label for="address">Type your address</label>
+                                </div>
+                               </div>
+                               <div class="col">
+                                <label for="photo" class="form-label">Select Photo</label>
+                                <input class="form-control" type="file" name="photo" id="photo" accept="image/*">
+                               </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <p class="fw-bold">Select Gender</p>
+                                    <div class="form-check-inline">
+                                        <input type="radio" name="gender" id="male" class="form-check-input" />
+                                        <label for="male" class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <input type="checkbox" name="gender" id="female" class="form-check-input" />
+                                        <label for="female" class="form-check-label">Female</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <p class="fw-bold">Select caste</p>
+                                    <div class="form-check">
+                                        <input type="radio" name="caste" id="general" class="form-check-input" />
+                                        <label for="general" class="form-check-label">General</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="caste" id="obc" class="form-check-input" />
+                                        <label for="obc" class="form-check-label">OBC</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="caste" id="sc" class="form-check-input" />
+                                        <label for="sc" class="form-check-label">SC</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="caste" id="st" class="form-check-input" />
+                                        <label for="st" class="form-check-label">ST</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <p class="fw-bold">Select language</p>
+                                    <div class="form-check">
+                                        <input type="checkbox" name="hindi" id="hindi" class="form-check-input" />
+                                        <label for="hindi" class="form-check-label">Hindi</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" name="english" id="english" class="form-check-input" />
+                                        <label for="english" class="form-check-label">English</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" name="gujarati" id="gujarati" class="form-check-input" />
+                                        <label for="gujarati" class="form-check-label">Gujarati</label>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/20994dd270.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
