@@ -1,6 +1,6 @@
 1) develop web page which will display 4 stroies in one line for large screen. 3 stories in one line for medium screen. 2 stories in one line for small screen and 1 stories in one line for mobile screen. there should be 20 stories in web page. each story has title, author and image and story.
 
-2) develop web page will will display 3 team members per line for large and medium screen. 2 team members for small screen and 1 team members for mobile screen. there will 6 team members. display team member name, qulification experience and photo
+2) develop web page will display 3 team members per line for large and medium screen. 2 team members for small screen and 1 team members for mobile screen. there will 6 team members. display team member name, qulification experience and photo
 
 3) develop web page that will display 6 team per line for large screen, 4 team per line for medium screen, 3 team per line on small screen and 1 team per line on mobile screen. there will be 10 teams. display team name and logo 
 
