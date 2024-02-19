@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>confirm example</h1>
+    <p align="right">
+        <a onclick="return UserConfirmation();" href="success.html">Subscribe</a>
+    </p>
+    <script>
+        //create user defined function 
+        function UserConfirmation()
+        {
+            // console.log('hello');
+            let response = confirm("Are you sure you want to do this?");
+            console.log(response);
+            return response;
+        }
+
+        //UserConfirmation(); //call function / use function
+
+    </script>
+</body>
+</html>
