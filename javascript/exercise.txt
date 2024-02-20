@@ -1,0 +1,4 @@
+1) write html page to add Gayatri manatra into web page using document. write method.
+
+2) create your resume using html. and add that resume into html page using document.write method.
+
