@@ -8,8 +8,11 @@
 <body>
     <h1>operators in javascript</h1>
     <script>
-        var num1 = prompt("Enter first number",'0');
-        var num2 = prompt("Enter second number",'1');
+        // var num1 = prompt("Enter first number",'0');
+        // var num2 = prompt("Enter second number",'1');
+        var num1 = 100;
+        var num2 = 200;
+        var num3 = 200;
         //convert value into inteer
         num1 = parseInt(num1);
         num2 = parseInt(num2);
@@ -22,6 +25,53 @@
         var division = num1 / num2;
 
         document.write(" substraction ",substraction," multiplication ",multiplication," division ",division);
+
+        //relational operators < > <= >= == !=
+        // num1 = 10 num2 = 20
+        var result = num1 < num2;
+        console.log(`${num1} < ${num2} `,result);
+        
+        result = num1 > num2;
+        console.log(`${num1} > ${num2} `,result);
+        
+        result = num1 <= num2;
+        console.log(`${num1} <= ${num2} `,result);
+
+        result = num1 >= num2;
+        console.log(`${num1} >= ${num2} `,result);
+
+        result = num1 == num2;
+        console.log(`${num1} >= ${num2} `,result);
+
+        result = num1 != num2;
+        console.log(`${num1} >= ${num2} `,result);
+
+        //logical operators && and , || or
+        result = num1 == num2 && num2 == num3;
+        console.log(`${num1} == ${num2} && ${num2} == ${num3} `,result);
+
+        result = num1 == num2 || num2 == num3;
+        console.log(`${num1} == ${num2} || ${num2} == ${num3} `,result);
+
+        //increment 
+        let a = 10;
+        //  a= a + 1;
+        // or 
+        a+=1;
+        console.log(`a=${a}`);
+        // a = a - 1;
+        a-=1;
+        console.log(`a=${a}`);
+
+        // a = a * 10;
+        a*=10;
+        console.log(`a=${a}`);
+
+        // a = a / 10;
+        a/=10;
+        console.log(`a=${a}`);
+
+        
     </script>
 </body>
 </html>
