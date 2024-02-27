@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -15,32 +18,60 @@
                         <h3>EMI Calculator</h3>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="success.html" onsubmit="return calculateEmi();">
                             <div class="mb-3">
-                                <label for="" class="form-label">Loan Amount</label>
-                                <input type="text" class="form-control" id="" required />
+                                <label for="amount" class="form-label">Loan Amount</label>
+                                <input type="number" class="form-control" id="amount" required />
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label">Rate</label>
-                                <input type="text" class="form-control" id="" required />
+                                <label for="rate" class="form-label">Yearly Rate</label>
+                                <input type="number" class="form-control" id="rate" required />
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label">Duration</label>
-                                <input type="text" class="form-control" id="" required />
+                                <label for="duration" class="form-label">Duration in years</label>
+                                <input type="number" class="form-control" id="duration" required />
                             </div>
                             <div>
                                 <input type="submit" value="Calculate EMI" class="btn btn-primary">
                                 <input type="reset" value="Clear all" class="btn btn-light">
-                                
+                                <h4 id="output"></h4>
                             </div>
                         </form>
-                    </div> 
+                    </div>
                     <!-- card body -->
 
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        //2nd method of creating function
+        //syntax
+        //let function-name = function()
+        var calculateEmi = function () {
+            //create 3 local variables to store 3 input
+            let amount = document.getElementById('amount').value;
+            let rate = document.getElementById('rate').value;
+            let duration = document.getElementById('duration').value;
+            console.log(amount, rate, duration);
+            //convert input from string to integer 
+            amount = parseInt(amount);
+            rate = parseInt(rate);
+            duration = parseInt(duration);
+            //formula apply
+            rate = (rate/12) / 100;
+            duration = duration * 12;
+            let temp = Math.pow((1 + rate), duration);
+            let emi = (amount * rate * temp) / (temp - 1);
+            //set precision upto 2 digit 
+            emi = emi.toFixed(2);
+            document.getElementById('output').innerHTML = emi;
+            return false; //required to stop submitting input to success.html
+        }
+    </script>
 </body>
+
 </html>
