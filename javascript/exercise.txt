@@ -2,3 +2,13 @@
 
 2) create your resume using html. and add that resume into html page using document.write method.
 
+3) create mutiplication table as per below link using while loop. start value and end value should be taken as input form user using html. use bootstrap 
+https://in.pinterest.com/pin/570268371575497761/
+
+4) create english calendar of given month and year. as per below format. 
+https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x1187.jpg
+
+5) create english calendar of given year. as per below format. 
+https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x1187.jpg
+
+6)
