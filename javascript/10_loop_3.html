@@ -48,6 +48,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="common.js"></script>
     <script>
         // function Generatetable()
         // {
@@ -59,11 +60,13 @@
         //arrow function
         Generatetable = () => {
             console.log('button clicked....');
-            let rows = document.getElementById('rows').value;
-            let columns = document.getElementById('columns').value;
-            let message = document.getElementById('message').value;
-            
-            let mytable = document.getElementById('mytable');
+            // let rows = $('rows').value;
+            let rows = val('rows');
+            // let columns = $('columns').value;
+            let columns = val('columns');
+            // let message = $('message').value;
+            let message = val('message');
+            let mytable = $('mytable');
             let x = 1;
             mytable.innerHTML = ``;
             while (x <= rows) //outer loop 
@@ -80,6 +83,13 @@
                 mytable.innerHTML += rowcontent
                 x = x + 1;
             }
+
+            // $('rows').value = '';
+            val('rows', '');
+            // $('columns').value = '';
+            val('columns', '');
+            // $('message').value = '';
+            val('message', '');
             return false;
         }
 
