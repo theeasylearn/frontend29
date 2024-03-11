@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* internal style */
+        .cell 
+        {
+            font-size: 48px;
+            height:50px;
+            width: 50px;
+            background-color: gainsboro;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px gray;
+            margin: auto;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        #board 
+        {
+            border: 1px solid black;
+            width:50%;
+            margin: auto;
+            box-shadow: 5px 5px 5px gray;
+            background-color: aliceblue;
+            display: grid;
+            grid-template-columns: repeat(3,33%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    
+    <div id="board">
+        <div  class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+        <div class="cell" >-</div>
+    </div>
+    <script>
+       //create list that has list of div tag with class cell
+       var cells = document.getElementsByClassName('cell');
+       console.log(cells);
+       var letter = '0';
+       for(let index=0;index<cells.length;index++)
+       {
+            cells[index].onclick = function()
+            {
+                // alert('button clicked...');
+                cells[index].innerHTML = letter;
+                if(letter === '0')
+                    letter = 'X';
+                else 
+                    letter = '0';
+            }
+       }
+    </script>
+</body>
+</html>

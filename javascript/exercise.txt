@@ -11,4 +11,4 @@ https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x118
 5) create english calendar of given year. as per below format. 
 https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x1187.jpg
 
-6)
+6) modify 14_event_handling_2.html. make sure none of the button clicked more then once & also findout and display winner.
