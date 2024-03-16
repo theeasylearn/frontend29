@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1st example of inheritance</h1>
+    <h3>multilevel inheritance</h3>
+    <h4>use console</h4>
+    <script>
+        //create class using es6 way
+    class KB
+    {
+        constructor(bytes)
+        {
+            this.bytes = bytes;
+        }
+        getKB()
+        {
+            //local variable
+            let kb = this.bytes / 1024;
+            return kb;
+        }
+    }
+    class MB extends KB
+    {
+        constructor(bytes)
+        {
+            super(bytes);
+        }
+        
+        getMB()
+        {
+            let temp = super.getKB();
+            let mb = temp / 1024;
+            return mb;
+        }
+    }
+    class GB extends MB
+    {
+        constructor(bytes)
+        {
+            super(bytes);
+        }
+        getGB()
+        {
+            let temp = super.getMB();
+            let gb = temp / 1024;
+            return gb;
+        }
+    }
+    //create GB class object
+    let bytes = parseInt(prompt("Enter bytes",0))
+    let g1 = new GB(bytes);
+    let kilobytes = g1.getKB();
+    console.log("Kilo bytes",kilobytes);
+
+    let megabytes = g1.getMB();
+    console.log("mega bytes",megabytes);
+
+    let gigabytes = g1.getGB();
+    console.log("giga bytes",gigabytes);
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1st example of inheritance</h1>
+    <h3>multilevel inheritance</h3>
+    <h4>use console</h4>
+    <script>
+        //create class using es6 way
+        class Person //parent class or super class or base class
+        {
+            constructor(name)
+            {
+                //property variable
+                this.name = name;
+            }
+            walk()
+            {
+                console.log(`${this.name} can walk`);
+            }
+            talk()
+            {
+                console.log(`${this.name} can talk`);
+            }
+        }
+        class Student extends Person //sub class or child class or derived class
+        {
+            constructor(name,rollno,standard)
+            {
+                //call parent class constuctor is required
+                super(name);
+                this.rollno = rollno;
+                this.standard = standard;
+            }
+            read()
+            {
+                console.log(`${this.name} with ${this.rollno} studying in ${this.standard} can read`);
+            }
+            write()
+            {
+                console.log(`${this.name} with ${this.rollno} studying in ${this.standard} can write`);
+            }
+        }
+        //create object of Student class
+        
+        class Developer extends Student
+        {
+            constructor(name,rollno,standard,language)
+            {
+                super(name,rollno,standard);
+                this.language = language;
+            }
+            code()
+            {
+                console.log(`${this.name} can write code in ${this.language}`);
+            }
+            debug()
+            {
+                console.log(`${this.name} can debug code in ${this.language}`);
+
+            }
+        }
+        //create object variable of Developer class
+        var d1 = new Developer("Priya",11,"12th",'Javascript');
+        d1.code();
+        d1.debug();
+        d1.read();
+        d1.write();
+        d1.walk();
+        d1.talk();
+
+    </script>
+</body>
+</html>

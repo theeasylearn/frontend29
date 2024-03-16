@@ -12,3 +12,13 @@ https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x118
 https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x1187.jpg
 
 6) modify 14_event_handling_2.html. make sure none of the button clicked more then once & also findout and display winner.
+
+7) extend GB class & create TB class which has method getTB() which will returns terabytes.
+
+8) create following class hiearchy using multilevel inheritance
+    1) Kilo
+        it has constructor with grams and method getKilo which kilo gram of grams 
+    2) Kwintle 
+        it has constructor with grams and method getKiwntle which Kwintle of grams 
+    3) Ton 
+        it has constructor with grams and method getTon which Ton of grams 
