@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hybrid inheritance</h1>
+    <hr/>
+    <h4>use console</h4>
+    <script>
+        class MyMath
+        {
+            //create pi
+            constructor()
+            {
+                this.pi = 3.14;
+            }
+            getSquare(number)
+            {
+                let square = number * number;
+                return square;
+            }
+        };
+        class Circle extends MyMath
+        {
+            constructor(radius)
+            {
+                super(); //required
+                this.radius = radius;
+            }
+            getArea()
+            {
+                //pi * radius * radius
+                let area = this.pi * super.getSquare(this.radius);
+                return area;
+            }
+        };
+        class Cyliender extends MyMath
+        {
+            constructor(radius,height)
+            {
+                super();    
+                this.radius = radius;
+                this.height = height;
+            }
+            getVolume()
+            {
+                let volume = this.pi * super.getSquare(this.radius) * this.height;
+                return volume;
+            }
+        }
+        class Sphere extends Circle
+        {
+            constructor(radius)
+            {
+                super(radius);
+            }
+            // method Overidding
+            getArea()
+            {
+                let area = 4 * super.getArea();
+                return area;
+            }
+        }
+        //create object variable
+        let radius = parseInt(prompt("Enter radius"));
+        let height = parseInt(prompt("Enter height"));
+        let c1 = new Circle(radius);
+        let c2 = new Cyliender(radius,height);
+        let sp1 = new Sphere(radius);
+
+        let area = c1.getArea();
+        let volume = c2.getVolume();
+        
+        console.log(`circle area = ${area}`);
+        console.log(`volume = ${volume}`);
+        area = sp1.getArea();
+        console.log(`sphere area = ${area}`);
+
+    </script>
+</body>
+</html>

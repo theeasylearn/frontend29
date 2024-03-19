@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Working with objects</h1>
+    <hr />
+    <script>
+        //empty object 
+        let user = {}; //blank object
+        console.log('Displaying empty object ', user);
+        user.name = "Ankit Patel";
+        user.gender = true;
+        user.age = 38;
+        console.log('displaying user object', user);
+
+        user.name = "A M Patel";
+        if (user.name === undefined)
+            alert('name does not exist in user');
+        else
+            alert("Welcome " + user.name);
+
+        if ("email" in user)
+            alert(user.email);
+        else
+            alert('email does not exist in user');
+    </script>
+</body>
+
+</html>
