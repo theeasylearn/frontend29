@@ -22,3 +22,9 @@ https://grabcalendar.com/wp-content/uploads/2021/12/March-2024-Calendar-1536x118
         it has constructor with grams and method getKiwntle which Kwintle of grams 
     3) Ton 
         it has constructor with grams and method getTon which Ton of grams 
+
+9) create javascript example that will display names of 20 vegitables inside list using array and map function
+
+10) create javascript example that will count odd and even numbers inside array using map function. after map function finish. display count of odd and even.
+
+11) 

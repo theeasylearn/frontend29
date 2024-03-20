@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>working with array</h1>
+    <hr />
+    <ol id="myfruits">
+    </ol>
+
+    <script>
+        // array of string
+        let fruits = ["Apple","Banana","Orange","Grape","Strawberry","Watermelon","Pineapple","Mango", "Pear","Cherry","Blueberry","Peach","Kiwi","Plum","Apricot","Lemon","Lime","Raspberry","Blackberry","Cranberry"];
+        console.log(fruits);
+
+        let myfruits = document.getElementById('myfruits');
+        fruits.map(function(item){
+            console.log(item);
+            myfruits.innerHTML += `<li>${item}</li>`;
+        });
+
+        let numbers = [10,50,25,11,65,90,1,8];
+        let square = numbers.map(function(item){
+            return item * item;
+        });
+        console.log(square);
+    </script>
+</body>
+
+</html>
