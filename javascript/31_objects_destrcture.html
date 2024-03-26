@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 bg-light vh-100 shadow">
+                <div class="card mt-3 shadow">
+                    <div class="card-header">
+                        <h4>Search Bus</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="" onsubmit="return FindRoutes();">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="source" placeholder="Source" required />
+                                <label for="source">Source</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="destination" required
+                                    placeholder="Destination">
+                                <label for="destination">Destination</label>
+                            </div>
+                            <input type="submit" value="search bus" class="w-100 btn btn-primary" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="card mt-3 shadow">
+                    <div class="card-header text-bg-primary">
+                        <h3>Available Routes</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Bus Type</th>
+                                    <th>Departure time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="output">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+        var routes = [
+            { from: 'bhavnagar', to: 'surat', busType: 'AC', departureTime: '08:00 AM' },
+            { from: 'rajkot', to: 'baroda', busType: 'non AC', departureTime: '09:30 AM' },
+            { from: 'ahmedabad', to: 'jamnagar', busType: 'AC', departureTime: '11:15 AM' },
+            { from: 'baroda', to: 'bhavnagar', busType: 'non AC', departureTime: '01:00 PM' },
+            { from: 'surat', to: 'rajkot', busType: 'AC', departureTime: '02:45 PM' },
+            { from: 'jamnagar', to: 'ahmedabad', busType: 'non AC', departureTime: '04:30 PM' },
+            { from: 'bhavnagar', to: 'surat', busType: 'AC', departureTime: '11:00 AM' },
+            { from: 'bhavnagar', to: 'rajkot', busType: 'AC', departureTime: '06:15 PM' },
+            { from: 'surat', to: 'baroda', busType: 'non AC', departureTime: '07:45 PM' },
+            { from: 'rajkot', to: 'jamnagar', busType: 'AC', departureTime: '09:30 PM' },
+            { from: 'baroda', to: 'ahmedabad', busType: 'non AC', departureTime: '11:15 PM' },
+            { from: 'ahmedabad', to: 'bhavnagar', busType: 'AC', departureTime: '01:00 AM' },
+            { from: 'jamnagar', to: 'rajkot', busType: 'non AC', departureTime: '02:45 AM' },
+            { from: 'baroda', to: 'surat', busType: 'AC', departureTime: '04:30 AM' },
+            { from: 'bhavnagar', to: 'jamnagar', busType: 'non AC', departureTime: '06:15 AM' },
+            { from: 'rajkot', to: 'ahmedabad', busType: 'AC', departureTime: '07:45 AM' },
+            { from: 'ahmedabad', to: 'baroda', busType: 'non AC', departureTime: '09:30 AM' },
+            { from: 'surat', to: 'bhavnagar', busType: 'AC', departureTime: '11:15 AM' },
+            { from: 'jamnagar', to: 'rajkot', busType: 'non AC', departureTime: '01:00 PM' },
+            { from: 'baroda', to: 'surat', busType: 'AC', departureTime: '02:45 PM' },
+            { from: 'rajkot', to: 'bhavnagar', busType: 'non AC', departureTime: '04:30 PM' },
+            { from: 'ahmedabad', to: 'surat', busType: 'AC', departureTime: '06:15 PM' },
+            { from: 'baroda', to: 'rajkot', busType: 'non AC', departureTime: '07:45 PM' },
+            { from: 'bhavnagar', to: 'baroda', busType: 'AC', departureTime: '09:30 PM' },
+            { from: 'jamnagar', to: 'bhavnagar', busType: 'non AC', departureTime: '11:15 PM' },
+            { from: 'surat', to: 'ahmedabad', busType: 'AC', departureTime: '01:00 AM' },
+            { from: 'rajkot', to: 'baroda', busType: 'non AC', departureTime: '02:45 AM' },
+            { from: 'bhavnagar', to: 'baroda', busType: 'AC', departureTime: '04:30 AM' },
+            { from: 'jamnagar', to: 'rajkot', busType: 'non AC', departureTime: '06:15 AM' },
+            { from: 'surat', to: 'bhavnagar', busType: 'AC', departureTime: '07:45 AM' },
+            { from: 'baroda', to: 'rajkot', busType: 'non AC', departureTime: '09:30 AM' },
+            { from: 'ahmedabad', to: 'surat', busType: 'AC', departureTime: '11:15 AM' },
+            { from: 'rajkot', to: 'bhavnagar', busType: 'non AC', departureTime: '01:00 PM' },
+            { from: 'baroda', to: 'jamnagar', busType: 'AC', departureTime: '02:45 PM' },
+            { from: 'bhavnagar', to: 'surat', busType: 'non AC', departureTime: '04:30 PM' },
+            { from: 'surat', to: 'rajkot', busType: 'AC', departureTime: '06:15 PM' },
+        ]
+
+        function FindRoutes() {
+            //create 2 variables to store from and to routes
+            var source = document.getElementById('source').value;
+            var destination = document.getElementById('destination').value;
+            console.log(source, destination);
+            var availableRoutes = routes.filter(function (route) {
+                if (route.from === source && route.to === destination)
+                    return route;
+            });
+            console.log(availableRoutes);
+            (availableRoutes.length>0)? displayRoutes(availableRoutes) : displayMessage();
+            return false;
+        }
+        function displayRoutes(availableRoutes) {
+            var output = document.getElementById('output');
+
+            var count = 1;
+            output.innerHTML = "";
+            //display available routes
+            availableRoutes.map(function (route) {
+                //object destructure
+                let {from,to,busType,departureTime} = route;
+                var content = `<tr>
+                                    <td>${count++}</td>
+                                    <td>${from}</td>
+                                    <td>${to}</td>
+                                    <td>${busType}</td>
+                                    <td>${departureTime}</td>
+                                </tr>`;
+                output.innerHTML += content;
+            });
+        }
+        function displayMessage()
+        {
+            var output = document.getElementById('output');
+            output.innerHTML = `<tr><td colspan='5' class='text-center text-bg-danger'>No route available</td></tr>`
+        }
+    </script>
+</body>
+
+</html>
