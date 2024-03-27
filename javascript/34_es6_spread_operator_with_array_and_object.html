@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>es6 spread operators with object</h1>
+                <p>use console</p>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script>
+        var countries = [
+            {
+                country: "India",
+                HDI: 0.500,
+                GDP_per_capita: 500,
+                life_expectancy: 50.7,
+                education_index: 0.300
+            },
+            {
+                country: "Switzerland",
+                HDI: 0.955,
+                GDP_per_capita: 60893,
+                life_expectancy: 83.6,
+                education_index: 0.896
+            },
+            {
+                country: "Ireland",
+                HDI: 0.944,
+                GDP_per_capita: 86988,
+                life_expectancy: 82.3,
+                education_index: 0.890
+            },
+            {
+                country: "Germany",
+                HDI: 0.947,
+                GDP_per_capita: 54286,
+                life_expectancy: 81.4,
+                education_index: 0.936
+            },
+            {
+                country: "Hong Kong",
+                HDI: 0.949,
+                GDP_per_capita: 67239,
+                life_expectancy: 84.7,
+                education_index: 0.926
+            }
+        ];
+        var india = {
+            country: "India",
+            HDI: 0.645,
+            GDP_per_capita: 2104,
+            life_expectancy: 69.7,
+            education_index: 0.527
+        }
+        console.log(countries);
+        console.log(india);
+        countries = [...countries,india];
+        console.log("now showing ", countries);
+    </script>
+</body>
+
+</html>

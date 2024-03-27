@@ -59,6 +59,8 @@
         ];
         var fruits = document.getElementById('fruits');
         var vegitables = document.getElementById('vegitables');
+        var both = document.getElementById('both');
+
         let displayItems = (list,target) => {
             list.map((item) => {
                 let content = `<p><h3 class="border-bottom pb-2">${item}</h3></p>`;
@@ -67,7 +69,11 @@
         }
         displayItems(fruits_list,fruits);
         displayItems(vegetables_list,vegitables);
+        //merge 2 or more array/list into another list
 
+        var mixed_list = [...fruits_list,...vegetables_list];
+        displayItems(mixed_list,both);
+        
     </script>
 </body>
 
