@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 align="center">get/delete cookies</h1>
+    <form action="" onsubmit="return fetchCookies();" method="post">
+        <table border="2" align="center">
+            <tr>
+                <td>
+                    Enter Cookies name
+                </td>
+                <td>
+                    <input type="text" name="cookiesname" id="cookiesname" required />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Cookies value
+                </td>
+                <td>
+                    <input type="text" name="cookiesvalue" id="cookiesvalue" readonly />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="fetch Cookie" />
+                    <input type="button" value="delete Cookie" onclick="DeleteCookie();" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script src="cookies.js"></script>
+    <script>
+
+        function fetchCookies() {
+            //alert('SaveCookies function is called...');
+            //create 2 variables 
+            var cookiesname = document.getElementById('cookiesname').value;
+            var temp = getCookie(cookiesname);
+            if (temp === '')
+                alert('no such cookies found');
+            else
+                document.getElementById('cookiesvalue').value = temp;
+            return false; //required
+        }
+
+        function DeleteCookie() {
+            // alert('DeleteCookie function is called...');
+            var cookiesname = document.getElementById('cookiesname').value;
+            if (cookiesname === '')
+                alert('please give cookie name');
+            else {
+                var temp = getCookie(cookiesname);
+                if (temp === '')
+                    alert('no such cookies found');
+                else
+                {
+                    //delete cookies
+                    setCookie(cookiesname,'',-10);
+                    alert('cookies has been deleted successfully');
+                    document.getElementById('cookiesname').value = '';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

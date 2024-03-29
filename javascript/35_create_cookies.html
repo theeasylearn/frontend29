@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Creating cookies</h1>
-    <form action="" onsubmit="return SaveCookies();">
+    <h1 align="center">Creating cookies</h1>
+    <form action="" onsubmit="return SaveCookies();" method="post">
         <table border="2" align="center">
             <tr>
                 <td>
@@ -32,8 +32,23 @@
             </tr>
         </table>
     </form>
+    <script src="cookies.js"></script>
     <script>
-        
+
+        function SaveCookies()
+        {
+            //alert('SaveCookies function is called...');
+            //create 2 variables 
+            var cookiesname = document.getElementById('cookiesname').value;
+            var cookiesvalue = document.getElementById('cookiesvalue').value;
+            console.log(cookiesname,cookiesvalue);
+            //create cookies
+            setCookie(cookiesname,cookiesvalue);
+            alert('cookies has been created....');
+            document.getElementById('cookiesname').value = '';
+            document.getElementById('cookiesvalue').value = '';
+            return false; //required
+        }
     </script>
 </body>
 </html>
