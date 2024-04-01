@@ -18,13 +18,13 @@
                         <h3 class="text-center">Working with local storage</h3>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="" onsubmit="return createLocalStorage();">
                             <div class="form-floating mb-2">
-                                <input type="text" class="form-control" id="keyname" placeholder="key name">
+                                <input type="text" class="form-control" id="keyname" placeholder="key name" required>
                                 <label for="keyname">Key Name</label>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="text" class="form-control" id="keyvalue" placeholder="key value" />
+                                <input type="text" class="form-control" id="keyvalue" placeholder="key value" required />
                                 <label for="keyvalue">keyvalue</label>
                             </div>
                             <div class="row">
@@ -33,16 +33,15 @@
 
                                 </div>
                                 <div class="col">
-                                    <input type="button" value="Read" class="btn btn-warning w-100" />
+                                    <input type="button" value="Read" class="btn btn-warning w-100" onclick="readLocalStorage();" />
 
                                 </div>
                                 <div class="col">
-                                    <input type="button" value="delete" class="btn btn-success w-100" />
+                                    <input type="button" value="delete" class="btn btn-success w-100" onclick="deleteKeyFromLocalStorage();" />
 
                                 </div>
                                 <div class="col">
-                                    <input type="button" value="clear all" class="btn btn-danger w-100" />
-
+                                    <input type="button" value="clear all" class="btn btn-danger w-100" onclick="removeAllKeyFromLocalStorage();" />
                                 </div>
                                 
                             </div>
@@ -55,6 +54,54 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script>
+        //create 2 variable 
+        let keyname = document.getElementById('keyname');
+        let keyvalue = document.getElementById('keyvalue')
+        let createLocalStorage = () =>
+        {
+            //create variable in local storage
+            localStorage.setItem(keyname.value,keyvalue.value);
+            alert('new key value pair added into local storage...');
+            keyname.value = "";
+            keyvalue.value = "";
+            return false;
+        }
+
+        let readLocalStorage = () => {
+            if(keyname.value === '')
+                alert('key name must not be empty');
+            else 
+            {
+                let temp = localStorage.getItem(keyname.value);
+                if(temp === null)
+                    alert('key does not exists in localstorage');
+                else 
+                    keyvalue.value = temp;
+            }
+        }
+
+        let deleteKeyFromLocalStorage = () => {
+            if(keyname.value === '')
+                alert('key name must not be empty');
+            else 
+            {
+                let temp = localStorage.getItem(keyname.value);
+                if(temp === null)
+                    alert('key does not exists in localstorage');
+                else 
+                {
+                    localStorage.removeItem(keyname.value);
+                    alert('key has been removed from local storage');
+                }
+            }
+        }
+
+        let removeAllKeyFromLocalStorage = () => {
+            localStorage.clear(); //remove all key's and its values 
+            alert('all keys has been removed from local storage');
+        }
+    </script>
 </body>
 
 </html>
