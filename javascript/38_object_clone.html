@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object Cloning</h1>
+    <b>use console </b>
+    <script>
+        let subject = {
+            name: "Javascript",
+            days:30,
+        };
+
+        let copy_subject = subject; //object reference
+        //object cloning
+        let clone = {}; 
+        
+        for(let key in subject) //2 times because subject has 2 properties
+        {   
+            clone[key] = subject[key];
+        }
+
+        console.log("before change");
+        console.log("subject",subject);
+        console.log("copy subject",copy_subject);
+        console.log("clone",clone);
+        subject.name = "JS";
+        copy_subject.days = 29;
+        clone.days = 31;
+        console.log("After change");
+        console.log("subject",subject);
+        console.log("copy subject",copy_subject);
+        console.log("clone",clone);
+    </script>
+</body>
+</html>
