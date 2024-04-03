@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Detect User Location using Javascript API</h1>
+    <hr>
+    <input type="button" value="Get Location" onclick="GetUserLocation();" />
+    <table border="1" align="center" cellpadding="5" width="40%">
+        <tr>
+            <th width="50%">Latitude</th>
+            <td id="latitude"></td>
+        </tr>
+        <tr>
+            <th>Longitude</th>
+            <td id="longitude"></td>
+        </tr>
+
+    </table>
+    <center id="map">
+
+    </center>
+    <script>
+        function GetUserLocation() {
+            //detect user location
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+        function showPosition(location) {
+            console.log(location);
+            var longitude = location.coords.longitude;
+            var latitude = location.coords.latitude;
+            document.getElementById("latitude").innerHTML = latitude;
+            document.getElementById("longitude").innerHTML = longitude;
+            var map = `<iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.676341867972!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f5a70ae66c5d9%3A0x79e1b3139eda8f90!2sThe%20Easy%20Learn%20Academy!5e0!3m2!1sen!2sin!4v1712065261035!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>` ;
+            document.getElementById("map").innerHTML = map;
+        }
+    </script>
+</body>
+
+</html>
