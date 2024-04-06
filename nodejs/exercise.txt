@@ -1,0 +1,3 @@
+create nodejs function that returns simple interest of given amount, rate, year 
+create nodejs function that returns given amount into words 
+amount = 1234 returns one two three four 
