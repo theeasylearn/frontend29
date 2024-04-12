@@ -1,3 +1,6 @@
-create nodejs function that returns simple interest of given amount, rate, year 
-create nodejs function that returns given amount into words 
+1) create nodejs function that returns simple interest of given amount, rate, year 
+2) create nodejs function that returns given amount into words 
 amount = 1234 returns one two three four 
+3) create nodejs application that accept request for ipl team names like 
+csk, GT, RR etc. 
+it should return object container detail about full team name, captain, home ground, player detail as array inside object. 
