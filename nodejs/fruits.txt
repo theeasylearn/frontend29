@@ -1,2 +1,0 @@
-lemon, coconut
-apple, banana, mango, orange
