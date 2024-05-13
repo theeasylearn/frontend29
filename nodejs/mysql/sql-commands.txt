@@ -1,0 +1,78 @@
+how to insert a new row/record into table?
+
+1st syntax
+insert into tablename values (field-values);
+
+example
+insert into category values (0,'books','books.jpg','all types of books history, science, self development, coding, stories etc');
+
+insert into category values (NULL,'laptop','laptop.jpg','all types of laptop like business, student, gaming  etc');
+
+2nd syntax
+insert into tablename (fields-name) values (field-values);
+
+example 
+insert into category (name,photo,detail) values ('mobile','mobile.jpg','Android and IPhone');
+
+insert into category (photo,name,detail) values ('ac.jpg','ac','all types of window and split ac');
+
+
+how to update existing row into table
+syntax
+update tablename set field=value[,field2=value,field3=value] [where condition]
+
+example
+update book name to books and magazine of those row whose name is book into category 
+
+update category set name='books and magazine' where name='books'
+
+update name to TV, photot to tv.jpg and detail to LCD AND LED TV of that row whose id is 4
+
+update category set name='tv',photo='tv.jpg',detail='LCD AND LED TV' where id=4
+
+how to existing delete row from table
+
+syntax
+-------------------------------------
+delete from tablename [where condition]
+example
+delete row from category table whose id is 5
+delete from category where id=5
+
+
+how to delete all rows from table & also reset primary key
+syntax
+truncate table tablename 
+example 
+truncate table category
+
+how to delete table's data and its structure 
+syntax 
+drop table category
+
+how to rename table 
+syntax 
+rename table oldname to newname 
+
+example 
+rename table product to products
+
+how to fetch data from tables.
+syntax
+select *|<fieldlist> from  <tablename> [where <condtion>][group by][having <condition>][order by <fieldlist>][limit range]
+
+1) fetch all fields & all records from customer table 
+select * from customers
+
+2) fetch only few fields
+    fetch customerNumber,customerName,city,state,country,creditlimit of all customers
+
+select customerNumber,customerName,city,state,country,creditlimit from customers
+
+3) fetch only first 10 customer's detail.
+select * from customers limit 0,10
+
+fetch only next 10 customer's detail.
+select * from customers limit 10,10
+
+
