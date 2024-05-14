@@ -75,4 +75,37 @@ select * from customers limit 0,10
 fetch only next 10 customer's detail.
 select * from customers limit 10,10
 
+4) fetch customerName wise all customers data. 
+select * from customers order by customerName 
+
+5) fetch customerName,country,state,city and display them country,state and city wise of 1st 50 customers
+    select customerName,country,state,city from customers order by country,state,city limit 0,50
+
+6) fetch customerName,country,state,city and display them country,state and city wise in desending order of 1st 
+    select customerName,country,state,city from customers order by country desc, state desc,city limit 0,50
+
+
+7) fetch customerName and their creditlimit of 50 customers with higest creditlimit
+    select customerName,creditlimit from customers order by creditlimit desc limit 0,50
+
+
+8) fetch 10 rows of payment details with lowest payment amount
+    select * from payments order by amount limit 0,10
+
+9) fetch highest payment details 
+    select * from payments order by amount desc limit 0,1
+
+10) fetch customer details of usa country
+    select * from customers where country='usa'
+
+
+11) fetch customerName and creditlimit of those customers whose creditlimit limit is above 100000
+select customerName,creditlimit from customers where creditlimit>100000
+
+12) fetch customerName and creditlimit of those customers whose creditlimit limit is between 100000 and 200000
+
+select customerName,creditlimit from customers where creditlimit>100000 and creditlimit<200000
+or
+select customerName,creditlimit from customers where creditlimit between 100000 and 200000
+
 
