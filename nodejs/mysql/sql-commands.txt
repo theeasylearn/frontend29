@@ -108,4 +108,53 @@ select customerName,creditlimit from customers where creditlimit>100000 and cred
 or
 select customerName,creditlimit from customers where creditlimit between 100000 and 200000
 
+5) fetch & display customers data country wise of those customers who are from uk,usa,france
+
+select * from customers where country='USA' or country='UK' or country='france' order by country
+
+or 
+select * from customers where country in ('France','UK','USA') order by country;
+
+5) fetch & display customers data country wise of those customers who are not from uk,usa,france
+
+select * from customers where country!='USA' and country!='UK' and country!='france'  order by country
+
+or 
+select * from customers where country not in ('France','UK','USA')  order by country;
+
+fetch customerNumber & Name of those customers whose name has wheels
+select customerNumber,customerName from customers where customerName like '%wheels%'
+
+fetch payments received in year 2004 & display paymentdate wise 
+select * from payments where paymentdate>='2004-01-01' and paymentdate<='2004-12-31' order by paymentdate
+
+fetch payment received in janary 2004 
+select * from payments where paymentdate>='2004-01-01' and paymentdate<='2004-01-31' order by paymentdate
+
+what is aggregate function?
+-----------------------------------------
+function which returns only one value after processing is called aggregate function. aggregate functions only works upon numeric field. we should not use other field with aggregate function.
+some example
+    sum, min , max, count, average 
+
+fetch total payments received so far 
+select sum(amount) from payments
+
+fetch minimum payment amount 
+select min(amount) from payments
+
+fetch maximum payment amount 
+select max(amount) from payments
+
+fetch average payment amount 
+select avg(amount) from payments
+
+we can also use where in aggregate function
+
+fetch total payments received in 2014
+select sum(amount) from payments paymentdate>='2004-01-01' and paymentdate<='2004-12-31'
+
+fetch total payments amount received by customerNumber 114
+select sum(amount) from payments where customerNumber=114
+
 
