@@ -157,4 +157,38 @@ select sum(amount) from payments paymentdate>='2004-01-01' and paymentdate<='200
 fetch total payments amount received by customerNumber 114
 select sum(amount) from payments where customerNumber=114
 
+count no of payments made so far 
+select count(*) from payments 
+
+count how many customers are from usa 
+select count(*) from customers where country='usa'
+
+display each customerNumber and total payments made so far 
+display customerNumber wise total payment of each and every customers
+
+select sum(amount) as total_payment,customerNumber from payments group by customerNumber
+
+count and display no of customers from each country 
+select count(*),country from customers group by country
+
+count and display no of customers from each country of those country in which company has less 3 customers
+select count(*),country from customers group by country having count(*)<3
+
+display those customers total payments who have made <100000 total payments
+select sum(amount) as total_payment,customerNumber from payments group by customerNumber
+having sum(amount)<100000 order by total_payment
+
+fetch unique country names 
+select distinct(country) from customers
+
+SQL JOINS
+-------------------------------------------
+SQL JOINS are used to fetch & display data from more then one table in single select statements.
+
+type of joins 
+    equi (inner) joins 
+    left outer join 
+    right outer join 
+    cross join 
+
 
