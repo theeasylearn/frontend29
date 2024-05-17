@@ -192,3 +192,25 @@ type of joins
     cross join 
 
 
+equi joins 
+---------------------------------
+fetch customerName,customerNumber,city,state,country and payment amount and paymentdate, display them customerNumber wise 
+
+select customerNumber,customerName,country,state,city from customers
+select amount,paymentdate from payments 
+
+select c.customerNumber,customerName,country,state,city,amount,paymentdate from customers c , payment p where c.customerNumber=p.customerNumber order by c.customerNumber
+
+fetch productcode,productname,productdescription and  its textdescription and html description and display productname wise 
+select productcode,productname,productdescription from products 
+select textdescription,htmldescription from productlines
+
+select productcode,productname,productdescription,pr.productline,textdescription,htmldescription from products pr, productlines pl where pr.productline=pl.productline order by productname
+
+fetch customerNumber,customerName,orderNumber,orderDate,productcode,productName and display them customerName wise of only usa customers
+
+select customerNumber,customerName from customers where country='usa'
+select orderNumber,orderDate from orders 
+select productcode,productname from products 
+
+select c.customerNumber,customerName,o.orderNumber,orderDate,p.productcode,productname from customers c, orders o, products p, orderdetails od where country='usa' and c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and od.productcode=p.productcode order by customerName
