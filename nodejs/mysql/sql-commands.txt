@@ -214,3 +214,23 @@ select orderNumber,orderDate from orders
 select productcode,productname from products 
 
 select c.customerNumber,customerName,o.orderNumber,orderDate,p.productcode,productname from customers c, orders o, products p, orderdetails od where country='usa' and c.customerNumber=o.customerNumber and o.orderNumber=od.orderNumber and od.productcode=p.productcode order by customerName
+
+left outer join 
+-------------------
+fetch those customer details who has never given payments 
+select customerNumber,customerName from customers 
+select customerNumber,amount from payments 
+
+select c.customerNumber,customerName,amount from customers c left join payments p on c.customerNumber=p.customerNumber where amount is NULL
+
+fetch those payments details which is not paid by any customers
+select customerNumber,customerName from customers 
+select customerNumber,amount from payments 
+
+select c.customerNumber,customerName,amount from customers c right join payments p on c.customerNumber=p.customerNumber where c.customerNumber is NULL
+
+display all possible combination of customers and product 
+select customerNumber,customerName from customers c
+select productCode,productName from products p 
+
+select customerNumber,customerName,productCode,productName from customers c,products p
