@@ -1,0 +1,49 @@
+Types of users
+    admin
+        role
+         add/edit/delete/view/search all most everything in this project for example category,product,pincode,shipping,orders,customers
+
+         admin modules 
+            Category management (class)
+                Add, edit, delete, view, search categories
+                table 
+                id,title,detail,photo,islive,isdeleted
+            Product management  (class)
+                Add, edit, delete, view, search products
+                table 
+                id,category,title,detail,price,stock,weight,size,photo,islive,isdeleted
+            slider management  (excercise)
+                Add, edit, delete, view, search sliders
+                table 
+                id,title,startdate,enddate,productid,photo
+            pincodes management (excercise)
+                Add, edit, delete, view, search pincodes
+                table 
+                id,city,area,pincode,state,islive,isdeleted
+            shipping management (excercise)       
+                Add, edit, delete, view, search shipping charges
+                table 
+                id,classname,weight,price,islive,isdeleted,
+            orders management  (class)        
+                view, process, search, Bill generate,print orders
+                table 
+                1 cart
+                    id,productid,quantity,price,userid,billid
+                2 bill
+                    id,userid,billdate,amount,paymentmode,paymentstatus,fullname,address1,address2,city,pincode,mobile,remarks,orderstatus
+
+            Users management   (class)      
+                view, search, shopping history, send mail, block & unblock   
+                users
+                    id,email,mobile,password,created_at,islive,isdeleted
+            Dashboard (class)
+            login (class)
+            change password (class)
+            forgot password (class)
+    buyers /register users (class)
+        register, login, logout, change password, recover account
+        browse products, manage cart, wishlist, place orders 
+        (excercise)
+         pincode check 
+         view history & download bill 
+         rating and reviews 
