@@ -63,7 +63,34 @@ app.post("/change-password",function(request,response){
     }    
     else 
     {
-        var sql = `select id from users where id=${id} and password='${oldpassword}'`
+        var sql = `select id from users where id=${id} and password='${oldpassword}'`;
+        connection.con.query(sql,function(error,result){
+            if(error!=null)
+            {
+                response.json([{ 'error': 'error occured' }]);
+            }
+            else 
+            {
+                if(result.length==0)
+                {
+                    response.json([{ 'error': 'no' }, { 'succcess': 'no' }, { 'message': 'invalid old password' }]);
+                }    
+                else 
+                {
+                    var sql2 = `update users set password='${newpassword}' where id=${id}`;
+                    connection.con.query(sql2,function(error2,result2){
+                        if(error2!=null)
+                        {
+                            response.json([{ 'error': 'error occured' }]);
+                        }    
+                        else 
+                        {
+                            response.json([{ 'error': 'no' }, { 'succcess': 'yes' }, { 'message': 'password updated successfully' }]);
+                        }
+                    });
+                }
+            }   
+        });
     }
 });
 const PORT = 5000;
