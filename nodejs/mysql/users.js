@@ -1,6 +1,8 @@
 var express = require('express');
 var app = new express();
 var connection = require("./connection");
+var e = require('./mymail.js');
+
 //below 2 middleware are required to access input we passed in route
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -90,6 +92,41 @@ app.post("/change-password",function(request,response){
                     });
                 }
             }   
+        });
+    }
+});
+app.post("/forgot-password", function (request, response) {
+    var email = request.body.email;
+    if (email === undefined) 
+    {
+        response.json([{ 'error': 'required input missing' }]);
+    }
+    else 
+    {
+        var sql = `select id from users where email='${email}'`;
+        connection.con.query(sql, function (error, result) {
+            if (error != null) {
+                response.json([{ 'error': 'error occured' }]);
+            }
+            else {
+                if (result.length == 0) {
+                    response.json([{ 'error': 'no' }, { 'succcess': 'no' }, { 'message': 'email not found' }]);
+                }
+                else {
+                    let newpassword = 'apple_banana';
+                    var sql2 = `update users set password='${newpassword}' where email='${email}'`;
+                    connection.con.query(sql2, function (error2, result2) {
+                        if (error2 != null) {
+                            response.json([{ 'error': 'error occured' }]);
+                        }
+                        else {
+                            response.json([{ 'error': 'no' }, { 'succcess': 'yes' }, { 'message': 'we have send you new password on your email' }]);
+                            var myemail = new e.mail();
+                            myemail.send(email, 'password recover email',`Hello User <br/> your new password is ${newpassword}`);
+                        }
+                    });
+                }
+            }
         });
     }
 });

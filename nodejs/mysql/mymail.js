@@ -1,8 +1,9 @@
 var nodemailer = require('nodemailer');
 class mail {
     constructor() {
-        this.sender = 'mayankjobanputra7@gmail.com';
-        this.password = 'qhwc eaic anip sebv';
+        this.sender = 'sahilpancha4652@gmail.com';
+        // this.password = 'qhwc eaic anip sebv';
+        this.password = 'dfik ouak yyed mncw';
         this.MailSender = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 587,
