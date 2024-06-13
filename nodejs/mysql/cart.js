@@ -54,7 +54,7 @@ let deleteFromCart = function (request, response) {
     }
 }
 let fetchProductsFromCart = function (request, response) {
-    let userid = request.query;
+    let userid = request.query.userid;
     if (userid === undefined) {
         response.json({ 'error': 'input is missing' });
     }
