@@ -36,7 +36,7 @@ let createNewOrder = function (request, response) {
 
         */
         //  fetch products that user has added into cart
-        let sql = `select productid from cart where usersid=? and billid=0`;
+        let sql = `select productid,quantity,stock,title,p.price as price from cart c, product p where usersid=? and billid=0 and p.id=productid`;
         connection.con.query(sql,[userid],function(error,result){
             if(error!=null)
                 response.json([{ 'error': 'error occured' }]);
@@ -46,8 +46,22 @@ let createNewOrder = function (request, response) {
                     response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'cart is empty' }]);
                 else 
                 {
-                    
-                    response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'cart is not empty' }]);
+                    let condition = "(";
+                    let cart = []; 
+                    for(let index=0;index<result.length;index++)
+                    {
+                        condition = condition + result[index]['productid'] + ",";
+                        cart.push({ 'productid': result[index]['productid'], 'quantity': result[index]['quantity'], 'stock': result[index]['stock'], 'title': result[index]['title'],'price':result[index]['price'] });
+                    }    
+                    condition = condition.substring(0,condition.length-1) + ")";
+                    console.log(condition);
+                    console.log(cart);
+                    let temp = cart.filter((item) => {
+                        if (item.quantity>item.stock)
+                            return item;
+                    });
+                    if(temp.length > 0)    
+                        response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'one or more product is out of stock' }]);
                 }
             }
         });
