@@ -21,8 +21,7 @@ let createNewOrder = function (request, response) {
     if (missingInputs !== '') {
         response.json([{ 'error': 'following inputs are required <br/>' + missingInputs }]);
     }
-    else 
-    {
+    else {
         /*
             1) fetch products that user has added into cart
             2) ensure each product is not out of stock means stock>quantity of order 
@@ -36,32 +35,68 @@ let createNewOrder = function (request, response) {
 
         */
         //  fetch products that user has added into cart
-        let sql = `select productid,quantity,stock,title,p.price as price from cart c, product p where usersid=? and billid=0 and p.id=productid`;
-        connection.con.query(sql,[userid],function(error,result){
-            if(error!=null)
+        let sql = `select productid,quantity,stock,title,p.price as price,c.id as cartid from cart c, product p where usersid=? and billid=0 and p.id=productid`;
+        connection.con.query(sql, [userid], function (error, result) {
+            if (error != null)
                 response.json([{ 'error': 'error occured' }]);
-            else 
-            {
-                if(result.length === 0)
+            else {
+                if (result.length === 0)
                     response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'cart is empty' }]);
-                else 
-                {
+                else {
                     let condition = "(";
-                    let cart = []; 
-                    for(let index=0;index<result.length;index++)
-                    {
+                    let cart = [];
+                    for (let index = 0; index < result.length; index++) {
                         condition = condition + result[index]['productid'] + ",";
-                        cart.push({ 'productid': result[index]['productid'], 'quantity': result[index]['quantity'], 'stock': result[index]['stock'], 'title': result[index]['title'],'price':result[index]['price'] });
-                    }    
-                    condition = condition.substring(0,condition.length-1) + ")";
+                        cart.push({ 'productid': result[index]['productid'], 'quantity': result[index]['quantity'], 'stock': result[index]['stock'], 'title': result[index]['title'], 'price': result[index]['price'], 'cartid': result[index]['cartid'] });
+                    }
+                    condition = condition.substring(0, condition.length - 1) + ")";
                     console.log(condition);
                     console.log(cart);
                     let temp = cart.filter((item) => {
-                        if (item.quantity>item.stock)
+                        if (item.quantity > item.stock)
                             return item;
                     });
-                    if(temp.length > 0)    
-                        response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'one or more product is out of stock' }]);
+                    if (temp.length > 0) {
+                        let outOfStock = '';
+                        temp.map((item) => {
+                            outOfStock += item.title + "<br/>";
+                        });
+                        response.json([{ 'error': 'no' }, { 'success': 'no' }, { 'message': 'following items are out of stock <br/>' + outOfStock }]);
+                    }
+                    else {
+                        //calculate bill amount
+                        let BillAmount = 0;
+                        cart.map((item) => {
+                            BillAmount += (parseInt(item.price) * parseInt(item.quantity))
+                        });
+                        console.log(BillAmount);
+                        //insert new row into bill table
+                        let sql = "INSERT into bill(usersid, fullname, address1, address2, mobile, city, pincode, paymentmode, amount, remarks) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        let data = [userid, fullname, address1, address2, mobile, city, pincode, paymentmode, BillAmount, remarks];
+                        connection.con.query(sql, data, function (error, result) {
+                            if (error != null)
+                                response.json([{ 'error': 'error occured' }]);
+                            else {
+                                let billid = result.insertId;
+                                cart.map((item) => {
+                                    let sql2 = 'update cart set billid=? where id=?';
+                                    let data2 = [billid, item.cartid];
+                                    connection.con.query(sql2, data2, function (error, result) {
+                                        if(error!=null)
+                                            response.json([{ 'error': 'error occured' }]);
+                                    });
+
+                                    let sql3 = 'update product set stock=stock - ? where id=?'
+                                    let data3 = [item.quantity, item.productid];
+                                    connection.con.query(sql3, data3, function (error, result) {
+                                        if (error != null)
+                                            response.json([{ 'error': 'error occured' }]);
+                                    });
+                                });
+                                response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'order placed successfully with order id' + billid}]);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -71,7 +106,27 @@ let fetchOrderDetail = function (request, response) {
 }
 
 let updateOrder = function (request, response) {
+    let {orderstatus,id} = request.body;
+    if(orderstatus === undefined || id === undefined)
+    {
+        response.json([{'error':'input is missing'}]);
+    }    
+    else 
+    {
+        let sql = 'update bill set orderstatus=? where id=?';
+        let data = [orderstatus,id];
+        connection.con.query(sql,data,function(error,result){
+            if(error!=null)
+            {
+                response.json([{'error':'error occured'}]);
+            }    
+            else 
+            {
+                response.json([{ 'error': 'no' }, { 'success': 'yes' }, { 'message': 'order updated successfully' }]);
 
+            }
+        });
+    }
 }
 app.post(ROUTE, (request, response) => createNewOrder(request, response));
 app.get(ROUTE, (request, response) => fetchOrderDetail(request, response));
