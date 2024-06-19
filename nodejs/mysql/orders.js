@@ -102,7 +102,33 @@ let createNewOrder = function (request, response) {
         });
     }
 }
+
 let fetchOrderDetail = function (request, response) {
+    let orderid = request.query.orderid;
+    let sql;
+    let data;
+    if(orderid === undefined)
+    {
+        sql = 'select * from bill order by id desc';
+        data = null;
+    }
+    else 
+    {
+        sql = 'select * from bill where id=?'
+        data = [orderid];
+    }
+    connection.con.query(sql,data,function(error,result){
+        if (error != null) {
+            response.json([{ 'error': 'error occured' }]);
+            console.log(error);
+        }
+        else 
+        {
+            result.unshift({'total':result.length});
+            result.unshift({'error':'no'});
+            response.json(result);
+        }
+    });
 }
 
 let updateOrder = function (request, response) {
