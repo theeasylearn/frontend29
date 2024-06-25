@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* class selector style */
+.myHeading 
+{
+    background-color: cyan;
+    color:blue;
+    text-transform: uppercase;
+    border-bottom: 1px solid blue;
+}
+.myList>li 
+{
+  border-bottom: 1px solid black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: large;
+  line-height: 150%;
+}
