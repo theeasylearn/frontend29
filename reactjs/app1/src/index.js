@@ -2,32 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-//create object
-let hours = new Date().getHours();
-//below function conditional jsx expression
-function getMessage(hours)
-{
-    if(hours>=6 && hours<=12)
-        return <h3>Good Morning {hours}</h3>
-    else if(hours>=13 && hours<=17)
-        return <h3>Good Afternoon {hours}</h3>    
-    else if(hours>=18 && hours<=24)
-        return <h3>Good Evening {hours}</h3>
-    else 
-        return <h3>Hello</h3>
-}
-function showMessage(hours)
-{
-    return (
+function showDateTime() {
+    let now = new Date();
+    let output = (
         <div className='container'>
-            <div className="row">
+            <div className='row'>
                 <div className="col-12">
-                    <h1>Conditional Statement in Reactjs</h1>
-                    <hr />
-                    {getMessage(hours)}
+                    <h1>Current Date Time</h1>
+                    <table  className='table table-bordered'>
+                        <tr>
+                            <td>Hour</td>
+                            <td>Minute</td>
+                            <td>Second</td>
+                        </tr>
+                        <tr>
+                            <td>{now.getHours()}</td>
+                            <td>{now.getMinutes()}</td>
+                            <td>{now.getSeconds()}</td>
+                        </tr>
+                        <tr>
+                            <td>day</td>
+                            <td>month</td>
+                            <td>year</td>
+                        </tr>
+                        <tr>
+                            <td>{now.getDate()}</td>
+                            <td>{now.getMonth() + 1}</td>
+                            <td>{now.getFullYear()}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-    )
+    );
+    root.render(output);
 }
-root.render(showMessage(hours));
+setInterval(showDateTime,1000);
