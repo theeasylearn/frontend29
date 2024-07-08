@@ -2,3 +2,6 @@
 2) create List of all asian countries using ol and li tag. 
 3) create your resume using html and css 
 4) create marksheet to display student Name, birthdate, gender, 5 subject, total, average and grade.
+5) create one page website using functional components. it should have at 10 functional components. 
+6) create webpage to display ipl teams using class components. display team name, captain name, home ground and year of winning trophy. 
+
