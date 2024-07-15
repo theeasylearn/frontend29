@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 class DinningTable extends React.Component {
-    // 1) initilization stage
     constructor(props) {
         super(props);
-        console.log('constructor is called...');
-        //create constant variables
-        
         //create property variable
         this.name = props.name;
         this.tableno = props.tableno;
@@ -17,38 +13,8 @@ class DinningTable extends React.Component {
             ras: 0,
             roti: 0,
             papad: 0,
-            chas: 0,
-            total:0
+            chas: 0
         }
-    }
-    //2) growth stage
-    componentWillMount()
-    {
-        console.log('component will mount method is called....')
-    }
-    
-    componentDidMount()
-    {
-        console.log('component did mount method is called....');
-    }
-    shouldComponentUpdate(nextProp,nextState)
-    {
-        console.log('shouldComponentUpdate called...');
-        if(nextState.thali >= 5)
-            return false;
-        else 
-            return true;
-    }
-
-    componentWillUpdate()
-    {
-        console.log('component Will Update called...');
-    }
-
-    componentDidUpdate()
-    {
-        console.log('component did Update called...');
-
     }
     changeThali()
     {
@@ -70,20 +36,7 @@ class DinningTable extends React.Component {
             roti: this.state.roti + 1
         });
     }
-    changeChas()
-    {
-        this.setState({
-            chas:this.state.chas + 1
-        });
-    }
-    changePapad()
-    {
-        this.setState({
-            papad:this.state.papad + 1
-        });
-    }
     render() {
-        console.log('render method is called...');
         return (<div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
             <div className="card shadow">
                 <div className="card-header text-bg-primary d-flex justify-content-between">
@@ -107,10 +60,10 @@ class DinningTable extends React.Component {
                     </div>
                     <div className="row mt-2">
                         <div className="col">
-                            <button onClick={() => this.changeChas()} type="button" className="btn btn-secondary w-100">Chas <span className="badge text-bg-light">{this.state.chas}</span></button>
+                            <button type="button" className="btn btn-secondary w-100">Chas <span className="badge text-bg-light">{this.state.chas}</span></button>
                         </div>
                         <div className="col">
-                            <button onClick={()=> this.changePapad()} type="button" className="btn btn-dark w-100">Papad <span className="badge text-bg-light">{this.state.papad}</span></button>
+                            <button type="button" className="btn btn-dark w-100">Papad <span className="badge text-bg-light">{this.state.papad}</span></button>
                         </div>
                     </div>
                 </div>
