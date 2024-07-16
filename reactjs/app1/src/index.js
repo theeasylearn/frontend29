@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 class DinningTable extends React.Component {
+    static ROTI_PRICE = 10;
+    static RAS_PRICE = 50;
+    static CHAS_PRICE = 15;
+    static PAPAD_PRICE = 7;
+    static THALI_PRICE = 200;
+
     // 1) initilization stage
     constructor(props) {
         super(props);
         console.log('constructor is called...');
         //create constant variables
-        
+
+
         //create property variable
         this.name = props.name;
         this.tableno = props.tableno;
@@ -18,68 +25,83 @@ class DinningTable extends React.Component {
             roti: 0,
             papad: 0,
             chas: 0,
-            total:0
+            total: 0
         }
     }
     //2) growth stage
-    componentWillMount()
-    {
-        console.log('component will mount method is called....')
+    componentWillMount() {
+        // console.log('component will mount method is called....')
     }
-    
-    componentDidMount()
-    {
-        console.log('component did mount method is called....');
+
+    componentDidMount() {
+        // console.log('component did mount method is called....');
+
     }
-    shouldComponentUpdate(nextProp,nextState)
-    {
+    shouldComponentUpdate(nextProp, nextState) {
         console.log('shouldComponentUpdate called...');
-        if(nextState.thali >= 5)
-            return false;
-        else 
+        console.log('current state', this.state);
+        console.log('next state', nextState);
+        if (
+            nextState.ras != this.state.ras ||
+            nextState.papad != this.state.papad ||
+            nextState.chas != this.state.chas ||
+            nextState.roti != this.state.roti 
+        ) 
+        {
             return true;
+        }
+        else if(nextState.thali <= 4)
+            return true
+        else
+            return false;
     }
 
-    componentWillUpdate()
-    {
-        console.log('component Will Update called...');
+    componentWillUpdate() {
+        // console.log('component Will Update called...');
     }
 
-    componentDidUpdate()
-    {
-        console.log('component did Update called...');
-
+    componentDidUpdate(previousProperty, previousState) {
+        // console.log('component did Update called...');
+        // console.log('current state',this.state);
+        // console.log('previous state', previousState);
+        if (this.state.total == previousState.total) {
+            let temp =
+                (this.state.thali * DinningTable.THALI_PRICE)
+                + (this.state.roti * DinningTable.ROTI_PRICE)
+                + (this.state.papad * DinningTable.PAPAD_PRICE)
+                + (this.state.ras * DinningTable.RAS_PRICE)
+                + (this.state.chas * DinningTable.CHAS_PRICE);
+            console.log(temp);
+            this.setState({
+                total: temp
+            });
+        }
     }
-    changeThali()
-    {
+    changeThali() {
         // this.state.thali = this.state.thali + 1; wrong way 
         //correct way
         this.setState({
             thali: this.state.thali + 1
         });
     }
-    changeRas()
-    {
+    changeRas() {
         this.setState({
             ras: this.state.ras + 1
         })
     }
-    changeRoti()
-    {
+    changeRoti() {
         this.setState({
             roti: this.state.roti + 1
         });
     }
-    changeChas()
-    {
+    changeChas() {
         this.setState({
-            chas:this.state.chas + 1
+            chas: this.state.chas + 1
         });
     }
-    changePapad()
-    {
+    changePapad() {
         this.setState({
-            papad:this.state.papad + 1
+            papad: this.state.papad + 1
         });
     }
     render() {
@@ -110,12 +132,12 @@ class DinningTable extends React.Component {
                             <button onClick={() => this.changeChas()} type="button" className="btn btn-secondary w-100">Chas <span className="badge text-bg-light">{this.state.chas}</span></button>
                         </div>
                         <div className="col">
-                            <button onClick={()=> this.changePapad()} type="button" className="btn btn-dark w-100">Papad <span className="badge text-bg-light">{this.state.papad}</span></button>
+                            <button onClick={() => this.changePapad()} type="button" className="btn btn-dark w-100">Papad <span className="badge text-bg-light">{this.state.papad}</span></button>
                         </div>
                     </div>
                 </div>
                 <div className="card-footer">
-                    Rs 1500
+                    Rs {this.state.total}
                 </div>
             </div>
         </div>)
