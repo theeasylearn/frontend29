@@ -45,12 +45,11 @@ class DinningTable extends React.Component {
             nextState.ras != this.state.ras ||
             nextState.papad != this.state.papad ||
             nextState.chas != this.state.chas ||
-            nextState.roti != this.state.roti 
-        ) 
-        {
+            nextState.roti != this.state.roti
+        ) {
             return true;
         }
-        else if(nextState.thali <= 4)
+        else if (nextState.thali <= 4)
             return true
         else
             return false;
@@ -160,3 +159,5 @@ class Page extends React.Component {
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Page />); //calling page
+
+
