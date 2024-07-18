@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import EventExample from './14_events';
 class DinningTable extends React.Component {
     static ROTI_PRICE = 10;
     static RAS_PRICE = 50;
@@ -118,7 +119,7 @@ class DinningTable extends React.Component {
                             </button>
                         </div>
                     </div>
-                    <div className="row mt-2">
+                    <div className="row mt-2" >
                         <div className="col">
                             <button onClick={() => this.changeRas()} type="button" className="btn btn-warning w-100">Ras <span className="badge text-bg-light">{this.state.ras}</span></button>
                         </div>
@@ -158,6 +159,6 @@ class Page extends React.Component {
     }
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Page />); //calling page
+root.render(<EventExample />); //calling page
 
 
