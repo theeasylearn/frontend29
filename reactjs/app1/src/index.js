@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ConditionalExample2 from './16_condition2';
+import Layout from './17_list_and_keys';
 class DinningTable extends React.Component {
     static ROTI_PRICE = 10;
     static RAS_PRICE = 50;
@@ -159,6 +159,6 @@ class Page extends React.Component {
     }
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ConditionalExample2 />); //calling page
+root.render(<Layout />); //calling page
 
 
