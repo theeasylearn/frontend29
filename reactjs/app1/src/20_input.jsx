@@ -9,7 +9,11 @@ export default function InputExample() {
         console.log("name : ", name);
         console.log("color : ", color);
         console.log("trophy : ", trophy);
-        setTeamData([...teamData, { name: name, color: color, trophy: trophy }]);
+        var trophyCollection = []
+        for (let count = 0; count < trophy; count++) {
+            trophyCollection.push(0)
+        }
+        setTeamData([...teamData, { name: name, color: color, trophy: trophyCollection }]);
         console.log("teamData ", teamData);
         e.preventDefault();
     }
@@ -41,7 +45,7 @@ export default function InputExample() {
                                         <label htmlFor="" className="form-label">
                                             Select number of trophies won
                                         </label>
-                                        <select name="trophy" id="trophy" className="form-select"
+                                        {/* <select name="trophy" id="trophy" className="form-select"
                                             onChange={(e) => setTrophy(e.target.value)}>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
@@ -49,7 +53,8 @@ export default function InputExample() {
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
-                                        </select>
+                                        </select> */}
+                                        <input type="number" name="trophy" id="trophy" className="form-control" onChange={(e) => setTrophy(e.target.value)} placeholder="Enter number of trophies won " />
                                     </div>
                                     <div className="text-end mt-3">
                                         <button type="submit" className="btn btn-success mx-3">Submit</button>
@@ -67,7 +72,7 @@ export default function InputExample() {
                             <div className="card my-3 shadow">
                                 <div className={value.color + " card-header h3 text-center "}>{value.name}</div>
                                 <div className="card-body">
-                                    {Array().fill(0, 5).map(() => {
+                                    {value.trophy.map(() => {
                                         return <img src="image/trophy.gif" style={{ height: "50px" }} alt="" />
                                     })}
                                 </div>
