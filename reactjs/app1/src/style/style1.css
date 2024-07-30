@@ -1,0 +1,11 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.myP {
+    margin: 30px;
+    background-color: rgb(214, 214, 255);
+    padding: 30px;
+    border-radius: 25px;
+}

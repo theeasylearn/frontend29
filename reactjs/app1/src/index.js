@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import InputExample2 from './21_input';
+import CssExample2 from './25_css';
 class DinningTable extends React.Component {
     static ROTI_PRICE = 10;
     static RAS_PRICE = 50;
@@ -159,6 +159,6 @@ class Page extends React.Component {
     }
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<InputExample2 />); //calling page
+root.render(<CssExample2 />); //calling page
 
 
