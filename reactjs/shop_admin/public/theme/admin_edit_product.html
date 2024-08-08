@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <img src="img/tiny.png" alt="">
+                <div class="sidebar-brand-text">Online shop <br/> Admin</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="admin_dashboard.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_category.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Categories</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_products.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Products</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_users.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Users</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_orders.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Orders</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_change_password.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Change Password</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin_logout.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Logout</span></a>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                   
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                          
+                           
+                        </li>
+
+                      
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                          
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex justify-content-between">
+                            <h5 class="m-0 font-weight-bold text-primary">Products (edit)</h5>
+                                    <a href="admin_product.html" class="btn btn-primary btn-sm">back
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <b>Existing Photo</b> <br>
+                                                    <img src="http://picsum.photos/200" 
+                                                    class="img-fluid" />
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4">
+                                                            <label for="category" class="form-label">Change Category</label> <br>
+                                                            <select id="category" class="form-select" required>
+                                                                <option selected>Choose...</option>
+                                                                <option value="1">Category 1</option>
+                                                                <option value="2">Category 2</option>
+                                                                <option value="3">Category 3</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="title" class="form-label">Edit Title</label>
+                                                            <input type="text" class="form-control" id="title" placeholder="Enter title" required>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="price" class="form-label">Edit Price</label>
+                                                            <input type="number" class="form-control" id="price" placeholder="Enter price" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-12">
+                                                            <label for="details" class="form-label">Edit Details</label>
+                                                            <textarea class="form-control" id="details" rows="3" placeholder="Enter details" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4">
+                                                            <label for="stock" class="form-label">Edit Stock</label>
+                                                            <input type="number" class="form-control" id="stock" placeholder="Enter stock quantity" required>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="weight" class="form-label">Edit Weight</label>
+                                                            <input type="number" class="form-control" id="weight" placeholder="Enter weight" required>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="size" class="form-label">Edit Size</label>
+                                                            <input type="text" class="form-control" id="size" placeholder="Enter size" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4">
+                                                            <label for="photo" class="form-label">Change Photo</label>
+                                                            <input type="file" class="form-control" id="photo" required accept="image/*" />
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="form-label">Is Live</label>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="islive" id="isLiveYes" value="1" required>
+                                                                <label class="form-check-label" for="isLiveYes">Yes</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="islive" id="isLiveNo" value="0" required />
+                                                                <label class="form-check-label" for="isLiveNo">No</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <button type="submit" class="btn btn-primary w-100 mb-2">Save changes</button>
+                                                    
+                                                            <button type="reset" class="btn btn-light w-100">Clear all</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                  
+                </div>      
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+
+</html>
