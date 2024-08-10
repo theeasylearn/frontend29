@@ -122,11 +122,15 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex justify-content-between">
                                     <h5 class="m-0 font-weight-bold text-primary">Order (Detail)</h5>
-                                    <a href="admin_orders.html" class="btn btn-primary btn-sm">Back
-                                    </a>
+                                    <span>
+                                        <a href="admin_orders.html" class="btn btn-primary btn-sm">Back
+                                        </a>
+                                        <a href="admin_print_order.html" class="btn btn-secondary btn-sm">Print
+                                        </a>
+                                    </span>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table table-sm table-striped">
+                                    <table class="table table-sm table-striped table-bordered">
                                         <tr>
                                             <td width="25%">Name</td>
                                             <td width="25%">Ankit Patel</td>
@@ -146,18 +150,63 @@
                                             <td>Pincode</td>
                                             <td>364001</td>
                                             <td>Delivery Status</td>
-                                            <td></td>
+                                            <td>
+                                                <form action="">
+                                                    <select class="form-control" name="orderstatus" id="orderstatus">
+                                                        <option value="">Select</option>
+                                                        <option value="">Confirmed</option>
+                                                        <option value="">Dispatched</option>
+                                                        <option value="">Delivered</option>
+                                                        <option value="">Canceled</option>
+                                                    </select>
+                                                    <input type="submit" value="save" class="btn btn-primary w-100 mt-1">
+                                                </form>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Mobile</td>
                                             <td>1234567890</td>
                                             <td>Payment Status</td>
-                                            <td></td>
+                                            <td>Online</td>
                                         </tr>
                                         <tr>
                                             <td colspan="1" >Remarks</td>
                                             <td colspan="3" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo possimus maxime debitis! Atque doloribus laborum similique officia deleniti delectus velit, et consequatur provident quas, ex sequi necessitatibus a tenetur? Culpa.</td>
                                         </tr>
+                                    </table>
+
+                                    <hr/>
+
+                                    <table class="table table-sm table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <td>Sr No</td>
+                                                <td>Name</td>
+                                                <td align="right">Price</td>
+                                                <td align="right">Quantity</td>
+                                                <td align="right">Total</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="5%">1</td>
+                                                <td width="40%">IPhone - 15 pro</td>
+                                                <td width="10%"  align="right">125000</td>
+                                                <td width="10%"  align="right">2</td>
+                                                <td width="20%"  align="right">250000</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="5%">2</td>
+                                                <td width="40%">Macbook pro</td>
+                                                <td width="10%" align="right">225000</td>
+                                                <td width="10%" align="right">1</td>
+                                                <td width="20%" align="right">225000</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">Total</td>
+                                                <td align="right">4,75,000</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
