@@ -3,6 +3,9 @@ export default function AdminHeader()
     let ButtonClick = function()
     {
         // alert('hi');
+        document.getElementById('page-top').classList.toggle("sidebar-toggled");
+        document.getElementById('accordionSidebar').classList.toggle("toggled");
+
     }
     return (<nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
         {/* Sidebar Toggle (Topbar) */}
