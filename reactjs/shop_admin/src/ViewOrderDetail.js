@@ -1,7 +1,7 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 
-export default function Vieworderdetail() {
+export default function ViewOrderDetail() {
   return (
     <div id="wrapper">
       <Sidebar />

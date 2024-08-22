@@ -1,7 +1,7 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 
-export default function adminusers() {
+export default function Users() {
   return (
     <div id="wrapper">
       <Sidebar />

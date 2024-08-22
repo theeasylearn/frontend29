@@ -1,7 +1,7 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 
-export default function viewproductdetail()
+export default function ViewProductDetail()
  {
   return (
     <div id="wrapper">

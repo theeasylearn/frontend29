@@ -1,4 +1,4 @@
-export default function adminlogin() {
+export default function AdminLogin() {
   return (
     <div className="container">
       {/* Outer Row */}
@@ -9,7 +9,7 @@ export default function adminlogin() {
               {/* Nested Row within Card Body */}
               <div className="row">
                 <div className="col-lg-6 d-none d-lg-block">
-                  <img src="img/large.png" />
+                  <img src="theme/img/large.png" />
                 </div>
                 <div className="col-lg-6">
                   <div className="p-5">

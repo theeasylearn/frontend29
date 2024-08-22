@@ -1,6 +1,6 @@
 
 
-export default function printorder() {
+export default function PrintOrder() {
   return (
     <>
       <h2 align="center">Bill</h2> <hr width="90%" />
