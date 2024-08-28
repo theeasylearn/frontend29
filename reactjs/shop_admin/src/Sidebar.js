@@ -3,10 +3,10 @@ export default function Sidebar()
 {
     return (<ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         {/* Sidebar - Brand */}
-        <a className="sidebar-brand d-flex align-items-center justify-content-center" to="index.html">
+        <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="index.html">
             <img src="theme/img/tiny.png" alt />
             <div className="sidebar-brand-text">Online shop <br /> Admin</div>
-        </a>
+        </Link>
         {/* Divider */}
         <hr className="sidebar-divider my-0" />
         {/* Nav Item - Dashboard */}

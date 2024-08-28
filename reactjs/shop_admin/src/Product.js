@@ -1,6 +1,6 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-
+import { Link } from "react-router-dom";
 export default function Products() 
 {
   return (
@@ -19,13 +19,13 @@ export default function Products()
                     <h5 className="m-0 font-weight-bold text-primary">
                       Product
                     </h5>
-                    <a
-                      href="admin_add_product.html "
+                    <Link
+                      to="/add-product"
                       className="btn btn-primary btn-sm"
                     >
                       add
                       <i className="fa fa-plus" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="card-body">
                     <table className="table table-bordered table-striped">
@@ -44,13 +44,13 @@ export default function Products()
                         <tr>
                           <td>1</td>
                           <td>
-                            <a
-                              href="admin_view_product_detail.html"
+                            <Link
+                              to="/view-product-detail"
                               target="_blank"
                             >
                               IPhone - 14 <br />
                               Phone
-                            </a>
+                            </Link>
                           </td>
                           <td>125000</td>
                           <td>
@@ -62,12 +62,12 @@ export default function Products()
                           <td>100</td>
                           <td>Yes</td>
                           <td>
-                            <a
-                              href="admin_edit_product.html"
+                            <Link
+                              to="/edit-product"
                               className="btn btn-warning btn-sm btn-block mb-1"
                             >
                               Edit
-                            </a>
+                            </Link>
                             <a
                               href="#"
                               className="btn btn-danger btn-sm btn-block"

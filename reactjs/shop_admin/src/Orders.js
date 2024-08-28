@@ -1,6 +1,6 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-
+import { Link } from "react-router-dom";
 export default function AdminOrders() {
   return (
     <div id="wrapper">
@@ -41,12 +41,12 @@ export default function AdminOrders() {
                           </td>
                           <td>Confirmed</td>
                           <td>
-                            <a
+                            <Link
                               className="btn btn-primary"
-                              href="admin-view-order-detail.html"
+                              to="/view-order-detail"
                             >
                               View
-                            </a>
+                            </Link>
                           </td>
                         </tr>
                       </tbody>

@@ -1,6 +1,6 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-
+import { Link } from "react-router-dom";
 export default function ViewOrderDetail() {
   return (
     <div id="wrapper">
@@ -19,18 +19,18 @@ export default function ViewOrderDetail() {
                       Order (Detail)
                     </h5>
                     <span>
-                      <a
-                        href="admin_orders.html"
+                      <Link
+                        to="/orders"
                         className="btn btn-primary btn-sm"
                       >
                         Back
-                      </a>
-                      <a
-                        href="admin_print_order.html"
+                      </Link>
+                      <Link
+                        to="/print-orders"
                         className="btn btn-secondary btn-sm"
                       >
                         Print
-                      </a>
+                      </Link>
                     </span>
                   </div>
                   <div className="card-body">

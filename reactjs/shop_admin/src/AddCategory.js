@@ -1,6 +1,6 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-
+import { Link } from "react-router-dom";
 export default function AddCategory()
 {
     return (<div id="wrapper">
@@ -17,8 +17,8 @@ export default function AddCategory()
                             <div className="card shadow mb-4">
                                 <div className="card-header py-3 d-flex justify-content-between">
                                     <h5 className="m-0 font-weight-bold text-primary">Category - (Add Category)</h5>
-                                    <a href="admin_category.html" className="btn btn-primary btn-sm">Back
-                                    </a>
+                                    <Link to="/category" className="btn btn-primary btn-sm">Back
+                                    </Link>
                                 </div>
                                 <div className="card-body">
                                     <form action encType="multipart/form-data" method="post">

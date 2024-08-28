@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 
@@ -16,8 +17,8 @@ export default function AddProduct() {
                             <div className="card shadow mb-4">
                                 <div className="card-header py-3 d-flex justify-content-between">
                                     <h5 className="m-0 font-weight-bold text-primary">Products (add)</h5>
-                                    <a href="admin_product.html" className="btn btn-primary btn-sm">back
-                                    </a>
+                                    <Link to="/product" className="btn btn-primary btn-sm">back
+                                    </Link>
                                 </div>
                                 <div className="card-body">
                                     <form>

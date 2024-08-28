@@ -1,6 +1,6 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-
+import { Link } from "react-router-dom";
 export default function Users() {
   return (
     <div id="wrapper">
@@ -37,9 +37,9 @@ export default function Users() {
                           <td>1234567890</td>
                           <td>Fri 09-08-2024</td>
                           <td>
-                            <a class="btn btn-primary" href="#">
+                            <Link class="btn btn-primary" to="/orders">
                               View
-                            </a>
+                            </Link>
                           </td>
                         </tr>
                       </tbody>
