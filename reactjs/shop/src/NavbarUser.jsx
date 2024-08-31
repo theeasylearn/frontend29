@@ -16,6 +16,25 @@ export default class NavbarUser extends React.Component {
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/">Home</Link>
                                     </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/category">Shop</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/cart">Cart</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/checkout">Checkout</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="#">Logout</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/userregister">Register</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/userlogin">Login</Link>
+                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>

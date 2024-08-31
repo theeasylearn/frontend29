@@ -1,4 +1,29 @@
+import { useState } from "react";
+import axios from 'axios';
+//
 export default function AdminLogin() {
+  let [email,setEmail] = useState();
+  let [password,setPassword] = useState();
+  let checkLogin = function(e)
+  {
+      e.preventDefault();
+      console.log(email,password);
+      let apiAddress = "https://theeasylearnacademy.com/shop/ws/admin_login.php?email=admin@gmail.com&password=123123";
+      let form = new FormData();
+      form.append('email',email);
+      form.append('password',password);
+
+      //api calling
+      axios({
+        method:'post',
+        url:apiAddress,
+        data:form,
+        responseType:'json'
+      }).then((response) => {
+        console.log(response);
+      });
+
+  }
   return (
     <div className="container">
       {/* Outer Row */}
@@ -16,30 +41,31 @@ export default function AdminLogin() {
                     <div className="text-center">
                       <h1 className="h4 text-gray-900 mb-4">Admin Login</h1>
                     </div>
-                    <form className="user">
+                    <form className="user" onSubmit={checkLogin}>
                       <div className="form-group">
                         <input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           type="email"
                           className="form-control form-control-user"
-                          id="exampleInputEmail"
+                          id="email"
                           aria-describedby="emailHelp"
                           placeholder="Enter Email Address..."
                         />
                       </div>
                       <div className="form-group">
                         <input
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                           type="password"
                           className="form-control form-control-user"
-                          id="exampleInputPassword"
+                          id="password"
                           placeholder="Password"
                         />
                       </div>
-                      <a
-                        href="index.html"
-                        className="btn btn-primary btn-user btn-block"
-                      >
+                      <button type="submit" className="btn btn-primary btn-user btn-block">
                         Sign in
-                      </a>
+                      </button>
                       <hr />
                     </form>
                     <hr />
