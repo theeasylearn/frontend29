@@ -1,17 +1,20 @@
 import { useState } from "react";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { showMessage } from "./message";
 import 'react-toastify/dist/ReactToastify.css';
+import getBase, {NETWORK_ERROR} from "./common";
 export default function AdminLogin() {
   let [email,setEmail] = useState();
   let [password,setPassword] = useState();
   let navigate = useNavigate();
+  
   let checkLogin = function(e)
   {
       e.preventDefault();
       console.log(email,password);
-      let apiAddress = "https://theeasylearnacademy.com/shop/ws/admin_login.php";
+      let apiAddress = getBase() + "admin_login.php";
       let form = new FormData();
       form.append('email',email); //admin@gmail.com
       form.append('password',password); //123123
@@ -26,25 +29,27 @@ export default function AdminLogin() {
         console.log(response);
         let error = response.data[0]['error'];
         if(error !== 'no')
-          toast(error);
+          showMessage(error);
         else 
         {
           let success = response.data[1]['success'];
           let message = response.data[2]['message'];
           if(success === 'no')
-            alert(message);
+            showMessage(message);
           else 
           {
-            alert(message);
+            showMessage(message,'success');
             //display another screen to user (dashboard)
-            navigate("/dashboard");
+            setTimeout(() => {
+              navigate("/dashboard");
+            },2000); //1000 miliseconds = 1 second
 
           }
         }
       }).catch((error) => {
           console.log(error);
           if(error.code === 'ERR_NETWORK')
-            alert('either server is offline or internet is not available or check api address');
+            showMessage(NETWORK_ERROR);
       });
 
   }
