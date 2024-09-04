@@ -1,49 +1,53 @@
-import { useEffect } from "react";
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import getBase, { NETWORK_ERROR } from "./common";
 import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 export default function DashBoard() {
-    let {category,setCategory} = useState();
-    let {product,setProduct} = useState();
-    let {users,setUsers} = useState();
-    let {orders,setOrders} = useState();
-    let {daily,setDaily} = useState();
-    let {monthly,setMonthly} = useState();
-    let {weekly,setWeekly} = useState();
-    let {yearly,setYearly} = useState();
+    var [category, setCategory] = useState();
+    var [product, setProduct] = useState();
+    var [users, setUsers] = useState();
+    var [orders, setOrders] = useState();
+    var [daily, setDaily] = useState();
+    var [monthly, setMonthly] = useState();
+    var [weekly, setWeekly] = useState();
+    var [yearly, setYearly] = useState();
+    var [isFetched,setIsFetched] = useState(false);
 
     useEffect(() =>{
         //api call 
-        let apiAddress = getBase() + "summery.php";
-        axios({
-            method:'get',
-            responseType:'json',
-            url:apiAddress,
-        }).then((response) => {
-            console.log(response.data);
-            let error = response.data[0]['error'];
-            if(error!='no')
-                showMessage(error);
-            else 
-            {
-                setCategory(response.data[1]['categories']);
-                setProduct(response.data[1]['products']);
-                setUsers(response.data[1]['users']);
-                setOrders(response.data[1]['orders']);
-                setDaily(response.data[1]['daily']);
-                setWeekly(response.data[1]['weekly']);
-                setMonthly(response.data[1]['monthly']);
-                setYearly(response.data[1]['yearly']);
-            }
-        }).catch((error) =>{
-            if(error.code === 'ERR_NETWORK')
-                showMessage(NETWORK_ERROR)    
-        })
-    })
+        if(isFetched === false) {
+            let apiAddress = getBase() + "summery.php";
+            axios({
+                method:'get',
+                responseType:'json',
+                url:apiAddress,
+            }).then((response) => {
+                console.log(response.data);
+                let error = response.data[0]['error'];
+                if(error!='no')
+                    showMessage(error);
+                else 
+                {
+                    setCategory(response.data[1]['categories']);
+                    setProduct(response.data[1]['products']);
+                    setUsers(response.data[1]['users']);
+                    setOrders(response.data[1]['orders']);
+                    setDaily(response.data[1]['daily']);
+                    setWeekly(response.data[1]['weekly']);
+                    setMonthly(response.data[1]['monthly']);
+                    setYearly(response.data[1]['yearly']);
+                    setIsFetched(true);
+                }
+            }).catch((error) =>{
+                if(error.code === 'ERR_NETWORK')
+                    showMessage(NETWORK_ERROR)    
+            });
+        }
+    });
     return (<div id="wrapper">
         <Sidebar />
         {/* Content Wrapper */}
@@ -51,6 +55,7 @@ export default function DashBoard() {
             {/* Main Content */}
             <div id="content">
                 <AdminHeader />
+                <ToastContainer />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">

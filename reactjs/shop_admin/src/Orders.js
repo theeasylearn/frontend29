@@ -1,6 +1,7 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+//https://theeasylearnacademy.com/shop/ws/orders.php
 export default function AdminOrders() {
   return (
     <div id="wrapper">
