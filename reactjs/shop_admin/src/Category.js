@@ -46,6 +46,7 @@ export default function Category() {
         <div id="content-wrapper" className="d-flex flex-column">
             <div id="content">
                 <AdminHeader />
+                <ToastContainer />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">
