@@ -1,10 +1,24 @@
 import { Link } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
-
+import getBase, { NETWORK_ERROR } from "./common";
+import axios from "axios";
+import { showMessage } from "./message";
+import { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 export default function AddProduct() {
+    /* create state variables for each and every input */
+    var [categoryId, setCategoryId] = useState(''); // For storing category ID
+    var [title, setTitle] = useState(''); // For storing the title
+    var [photo, setPhoto] = useState(''); // For storing the photo URL or file path
+    var [quantity, setQuantity] = useState(0); // For storing the quantity
+    var [size, setSize] = useState(''); // For storing the size
+    var [weight, setWeight] = useState(''); // For storing the weight
+    var [detail, setDetail] = useState(''); // For storing the details
+    var [isLive, setIsLive] = useState(false); // For storing live status (boolean)
+    
     return (<div id="wrapper">
-         <Sidebar />
+        <Sidebar />
         {/* Content Wrapper */}
         <div id="content-wrapper" className="d-flex flex-column">
             {/* Main Content */}
@@ -24,8 +38,8 @@ export default function AddProduct() {
                                     <form>
                                         <div className="row mb-3">
                                             <div className="col-md-4">
-                                                <label htmlFor="category" className="form-label">Category</label> <br />
-                                                <select id="category" className="form-select" required>
+                                                <label htmlFor="categoryid" className="form-label">Category</label> <br />
+                                                <select id="categoryid" className="form-select" required>
                                                     <option selected>Choose...</option>
                                                     <option value={1}>Category 1</option>
                                                     <option value={2}>Category 2</option>
