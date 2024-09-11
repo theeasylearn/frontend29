@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 import getBase, { NETWORK_ERROR } from "./common";
@@ -17,13 +17,14 @@ export default function AddProduct() {
     var [weight, setWeight] = useState(''); // For storing the weight
     var [detail, setDetail] = useState(''); // For storing the details
     var [isLive, setIsLive] = useState(false); // For storing live status (boolean)
-    
+    var navigate = useNavigate();
     let saveProduct = function(e)
     {
         e.preventDefault();
+        //: name,photo,price,stock,detail,categoryid,islive (required)
         console.log(categoryId,title,photo,stock,size,weight,detail,isLive);
         let form = new FormData(); //create object of FormData class
-        form.append("title", title);
+        form.append("name", title);
         form.append("photo", photo);
         form.append("price", price);
         form.append("stock", stock);
@@ -31,7 +32,7 @@ export default function AddProduct() {
         form.append("weight", weight);
         form.append("detail", detail);
         form.append("categoryid", categoryId);
-        form.append("isLive", isLive);
+        form.append("islive", isLive);
         let apiAddress = getBase() + "insert_product.php";
         axios({
             method:'post',
@@ -40,6 +41,23 @@ export default function AddProduct() {
             data:form
         }).then((response) => {
             console.log(response.data);
+            let error = response.data[0]['error'];
+            if(error !=='no')
+                showMessage(error);
+            else 
+            {
+                let success = response.data[1]['success'];
+                let message = response.data[2]['message'];
+                if(success==='no')
+                    showMessage(message);
+                else 
+                {
+                    showMessage(message,'success');
+                    setTimeout(() => {
+                        navigate("/product")
+                    },2000);
+                }
+            }
         }).catch((error) => {
             if(error.code === 'ERR_NETWORK')
                 showMessage(NETWORK_ERROR);
