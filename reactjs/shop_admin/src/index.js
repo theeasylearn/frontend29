@@ -35,7 +35,7 @@ function MyRouter()
             <Route path='print-orders' element={<PrintOrder />} />
             <Route path='users' element={<Users />} />
             <Route path='view-order-detail' element={<ViewOrderDetail />} />
-            <Route path='view-product-detail' element={<ViewProductDetail />} />
+            <Route path='view-product-detail/:productid' element={<ViewProductDetail />} />
             <Route path='dashboard' element={<DashBoard />} />
             <Route path='*' element={<FileNotFound />} />
         </Routes>

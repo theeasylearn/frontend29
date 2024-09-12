@@ -41,6 +41,38 @@ export default function Category() {
             });
         }
     });
+    let deleteCategory = function(categoryid)
+    {
+        console.log(categoryid);
+        let apiAddress = getBase() + "delete_category.php?id=" + categoryid;
+        axios({
+            method:'get',
+            responseType:'json',
+            url:apiAddress,
+
+        }).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if(error !== 'no')
+                showMessage(error);
+            else 
+            {
+                showMessage(response.data[1]['message'],'success');
+                //delete the same category from state array
+                let temp = categories.filter((item) => {
+                    if(item.id != categoryid)
+                        return item;
+                });
+                //now set this filtered list into categories
+                setCategories(temp);
+
+            }
+        }).catch((error) => {
+            console.log(error);
+            if(error.code === 'ERR_NETWORK')
+                showMessage(NETWORK_ERROR);
+        });
+    }
     return (<div id="wrapper">
         <Sidebar />
         <div id="content-wrapper" className="d-flex flex-column">
@@ -79,7 +111,7 @@ export default function Category() {
                                                     <td>{item['islive'] === '1' ? 'Yes' : 'no'}</td>
                                                     <td width="15%">
                                                         <Link to="/edit-category" className="btn btn-warning btn-sm">Edit</Link>
-                                                        <button type='button' className="btn btn-danger btn-sm">Delete</button>
+                                                        <button onClick={() => deleteCategory(item.id)} type='button' className="btn btn-danger btn-sm">Delete</button>
                                                     </td>
                                                 </tr>)
                                             })}
