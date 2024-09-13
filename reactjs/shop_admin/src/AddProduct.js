@@ -18,6 +18,41 @@ export default function AddProduct() {
     var [detail, setDetail] = useState(''); // For storing the details
     var [isLive, setIsLive] = useState(false); // For storing live status (boolean)
     var navigate = useNavigate();
+    //create state array to store categories 
+    let [categories, setCategories] = useState([]);
+
+    //fetch category from server after component is rendered 
+    useEffect(() => {
+        if (categories.length === 0) {
+            let apiAddress = getBase() + "category.php";
+            axios({
+                method: 'get',
+                url: apiAddress,
+                responseType: 'json',
+
+            }).then((response) => {
+                console.log(response.data);
+                let error = response.data[0]['error'];
+                if (error !== 'no')
+                    showMessage(error);
+                else {
+                    let total = response.data[1]['total'];
+                    if (total === 0)
+                        showMessage('no category found');
+                    else {
+                        //delete 2 elements from begining
+                        response.data.splice(0, 2);
+                        //store remaining array into state array
+                        setCategories(response.data);
+                    }
+                }
+            }).catch((error) => {
+                if (error.code === 'ERR_NETWORK')
+                    showMessage(NETWORK_ERROR)
+            });
+        }
+    });
+
     let saveProduct = function(e)
     {
         e.preventDefault();
@@ -88,10 +123,10 @@ export default function AddProduct() {
                                                 <label htmlFor="categoryid" className="form-label">Category</label> <br />
                                                 <select id="categoryid" className="form-select" required
                                                 onChange={(e) => setCategoryId(e.target.value)}>
-                                                    <option selected>Choose...</option>
-                                                    <option value={1}>Category 1</option>
-                                                    <option value={2}>Category 2</option>
-                                                    <option value={3}>Category 3</option>
+                                                    <option value='' >Choose Category</option>
+                                                    {categories.map((item) => {
+                                                        return (<option value={item['id']}>{item['title']}</option>)
+                                                    })}
                                                 </select>
                                             </div>
                                             <div className="col-md-4">
