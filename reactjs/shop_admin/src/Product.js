@@ -99,7 +99,7 @@ export default function Products()
                                 <td>{(item['islive']==='1')?'Yes':'No'}</td>
                                 <td>
                                   <Link
-                                    to="/edit-product"
+                                    to={"/edit-product/" + item['id']}
                                     className="btn btn-warning btn-sm btn-block mb-1"
                                   >
                                     Edit

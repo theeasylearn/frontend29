@@ -26,7 +26,7 @@ function MyRouter()
             <Route path='add-category' element={<AddCategory />} />
             <Route path='add-product' element={<AddProduct />} />
             <Route path='edit-category' element={<EditCategory/>} />
-            <Route path='edit-product' element={<EditProduct />} />
+            <Route path='edit-product/:productid' element={<EditProduct />} />
             <Route path='category' element={<Category />} />
             <Route path='product' element={<Products />} />
             <Route path='change-password' element={<ChangePassword />} />

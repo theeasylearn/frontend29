@@ -1,7 +1,68 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
+import { useEffect } from "react";
+import getBase, { NETWORK_ERROR } from "./common";
+import axios from "axios";
+import { showMessage } from "./message";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { useParams } from "react-router-dom";
 
 export default function EditProduct() {
+  //object destrutring
+  let {productid} = useParams();
+
+  let [title,setTitle] = useState();
+  let [price,setPrice] = useState();
+  let [weight,setWeight] = useState();
+  let [size,setSize] = useState();
+  let [detail,setDetail] = useState();
+  let [photo,setPhoto] = useState();
+  let [isLive,setIsLive] = useState();
+  let [categoryid,setCategoryId] = useState();
+  let [stock,setStock] = useState();
+
+  useEffect(() => {
+      //api call
+      let apiAddress = getBase() + "product.php?productid=" + productid;
+      axios({
+          method:'get',
+          responseType:'json',
+          url:apiAddress
+      }).then((response) => {
+          console.log(response.data);
+          let error = response.data[0]['error'];
+          if(error !=='no')
+            showMessage(error);
+          else 
+          {
+            let total = response.data[1]['total'];
+            if(total === 0)
+              showMessage('no product found');
+            else 
+            {
+                //response.data.splice(0,2); //delete 1st object
+                setTitle(response.data[2]['title']);
+                setPrice(response.data[2]['price']);
+                setStock(response.data[2]['stock']);
+
+                setPhoto(response.data[2]['photo']);
+                setWeight(response.data[2]['weight']);
+                setIsLive(response.data[2]['islive']);
+
+                setDetail(response.data[2]['detail']);
+                setCategoryId(response.data[2]['CategoryId']);
+                setSize(response.data[2]['size']);
+
+
+            }
+          }
+      }).catch((error) => {
+        if(error.code === 'ERR_NETWORK')
+            showMessage(NETWORK_ERROR);
+      });
+  });
+
   return (
     <div id="wrapper">
       <Sidebar />
@@ -31,7 +92,7 @@ export default function EditProduct() {
                         <div className="col-sm-2">
                           <b>Existing Photo</b> <br />
                           <img
-                            src="http://picsum.photos/200"
+                            src={"http://www.theeasylearnacademy.com/shop/images/product/" + photo}
                             className="img-fluid"
                           />
                         </div>
@@ -59,6 +120,7 @@ export default function EditProduct() {
                               </label>
                               <input
                                 type="text"
+                                value={title}
                                 className="form-control"
                                 id="title"
                                 placeholder="Enter title"
@@ -73,6 +135,7 @@ export default function EditProduct() {
                                 type="number"
                                 className="form-control"
                                 id="price"
+                                value={price}
                                 placeholder="Enter price"
                                 required=""
                               />
@@ -89,8 +152,9 @@ export default function EditProduct() {
                                 rows={3}
                                 placeholder="Enter details"
                                 required=""
-                                defaultValue={""}
-                              />
+                                defaultValue={detail}>
+                                
+                              </textarea>
                             </div>
                           </div>
                           <div className="row mb-3">
@@ -103,7 +167,7 @@ export default function EditProduct() {
                                 className="form-control"
                                 id="stock"
                                 placeholder="Enter stock quantity"
-                                required=""
+                                required="" value={stock}
                               />
                             </div>
                             <div className="col-md-4">
@@ -115,7 +179,7 @@ export default function EditProduct() {
                                 className="form-control"
                                 id="weight"
                                 placeholder="Enter weight"
-                                required=""
+                                required="" value={weight}
                               />
                             </div>
                             <div className="col-md-4">
@@ -125,7 +189,7 @@ export default function EditProduct() {
                               <input
                                 type="text"
                                 className="form-control"
-                                id="size"
+                                id="size" value={size}
                                 placeholder="Enter size"
                                 required=""
                               />
