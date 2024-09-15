@@ -6,63 +6,152 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditProduct() {
-  //object destrutring
-  let {productid} = useParams();
+  //object destructring
+  let { productid } = useParams();
+  //create state variable(hold only one value at time)
+  let [title, setTitle] = useState();
+  let [price, setPrice] = useState();
+  let [weight, setWeight] = useState();
+  let [size, setSize] = useState();
+  let [detail, setDetail] = useState();
+  let [photo, setPhoto] = useState();
+  let [isLive, setIsLive] = useState();
+  let [categoryid, setCategoryId] = useState();
+  let [stock, setStock] = useState();
+  let [isDataFetched, setIsDataFetched] = useState(false);
+  //create state array (many values at a time)
+  let [category, setCategories] = useState([]);
 
-  let [title,setTitle] = useState();
-  let [price,setPrice] = useState();
-  let [weight,setWeight] = useState();
-  let [size,setSize] = useState();
-  let [detail,setDetail] = useState();
-  let [photo,setPhoto] = useState();
-  let [isLive,setIsLive] = useState();
-  let [categoryid,setCategoryId] = useState();
-  let [stock,setStock] = useState();
+  //create navigate object
+  let navigate = useNavigate();
 
-  useEffect(() => {
-      //api call
-      let apiAddress = getBase() + "product.php?productid=" + productid;
+  let fetchSingleProduct = function () {
+    //api call
+    let apiAddress = getBase() + "product.php?productid=" + productid;
+    axios({
+      method: 'get',
+      responseType: 'json',
+      url: apiAddress
+    }).then((response) => {
+      console.log(response.data);
+      let error = response.data[0]['error'];
+      if (error !== 'no')
+        showMessage(error);
+      else {
+        let total = response.data[1]['total'];
+        if (total === 0)
+          showMessage('no product found');
+        else {
+          //response.data.splice(0,2); //delete 1st object
+          setTitle(response.data[2]['title']);
+          setPrice(response.data[2]['price']);
+          setStock(response.data[2]['stock']);
+
+          setPhoto(response.data[2]['photo']);
+          setWeight(response.data[2]['weight']);
+          setIsLive(response.data[2]['islive']);
+
+          setDetail(response.data[2]['detail']);
+          setCategoryId(response.data[2]['categoryid']);
+          setSize(response.data[2]['size']);
+
+
+        }
+      }
+    }).catch((error) => {
+      if (error.code === 'ERR_NETWORK')
+        showMessage(NETWORK_ERROR);
+    });
+  }
+  let fetchCategories = function () {
+    if (category.length === 0) {
+      let apiAddress = getBase() + "category.php";
       axios({
-          method:'get',
-          responseType:'json',
-          url:apiAddress
+        method: 'get',
+        url: apiAddress,
+        responseType: 'json',
+
       }).then((response) => {
-          console.log(response.data);
-          let error = response.data[0]['error'];
-          if(error !=='no')
+        console.log(response.data);
+        let error = response.data[0]['error'];
+        if (error !== 'no')
+          showMessage(error);
+        else {
+          let total = response.data[1]['total'];
+          if (total === 0)
+            showMessage('no category found');
+          else {
+            //delete 2 elements from begining
+            response.data.splice(0, 2);
+            //store remaining array into state array
+            setCategories(response.data);
+            setIsDataFetched(true);
+
+          }
+        }
+      }).catch((error) => {
+        if (error.code === 'ERR_NETWORK')
+          showMessage(NETWORK_ERROR)
+      });
+    }
+  }
+  useEffect(() => {
+    if (isDataFetched === false) {
+      fetchSingleProduct();
+      fetchCategories();
+    }
+  }); 
+  
+  let updateProduct = function(e)
+  {
+      e.preventDefault();
+      console.log(categoryid,title,price,stock,weight,size,isLive,detail,photo);
+      let apiAddress = getBase() + "update_product.php";
+      // input : name,photo,price,stock,detail,productid,categoryid (required) 
+      let form = new FormData();
+      form.append("name", title);
+      form.append("photo", photo);
+      form.append("price", price);
+      form.append("stock", stock);
+      form.append("size", size);
+      form.append("weight", weight);
+      form.append("detail", detail);
+      form.append("categoryid",categoryid);
+      form.append("islive", isLive);
+      form.append("productid", productid);
+      axios({
+        method:'post',
+        responseType:'json',
+        url:apiAddress,
+        data:form
+      }).then((response) => {
+        console.log(response.data);
+        let error = response.data[0]['error'];
+        if(error !=='no')
             showMessage(error);
-          else 
-          {
-            let total = response.data[1]['total'];
-            if(total === 0)
-              showMessage('no product found');
+        else 
+        {
+            let success = response.data[1]['success'];
+            let message = response.data[2]['message'];
+            if(success==='no')
+                showMessage(message);
             else 
             {
-                //response.data.splice(0,2); //delete 1st object
-                setTitle(response.data[2]['title']);
-                setPrice(response.data[2]['price']);
-                setStock(response.data[2]['stock']);
-
-                setPhoto(response.data[2]['photo']);
-                setWeight(response.data[2]['weight']);
-                setIsLive(response.data[2]['islive']);
-
-                setDetail(response.data[2]['detail']);
-                setCategoryId(response.data[2]['CategoryId']);
-                setSize(response.data[2]['size']);
-
-
+                showMessage(message,'success');
+                setTimeout(() => {
+                    navigate("/product");
+                },2000);
             }
-          }
-      }).catch((error) => {
+        }
+    }).catch((error) => {
         if(error.code === 'ERR_NETWORK')
             showMessage(NETWORK_ERROR);
-      });
-  });
+    });
 
+  }
   return (
     <div id="wrapper">
       <Sidebar />
@@ -72,6 +161,7 @@ export default function EditProduct() {
         <div id="content">
           <AdminHeader />
           <div className="container-fluid">
+            <ToastContainer />
             <div className="row">
               <div className="col-12">
                 <div className="card shadow mb-4">
@@ -87,7 +177,7 @@ export default function EditProduct() {
                     </a>
                   </div>
                   <div className="card-body">
-                    <form>
+                    <form onSubmit={updateProduct}>
                       <div className="row">
                         <div className="col-sm-2">
                           <b>Existing Photo</b> <br />
@@ -107,11 +197,16 @@ export default function EditProduct() {
                                 id="category"
                                 className="form-select"
                                 required=""
+                                onChange={(e) => setCategoryId(e.target.value)}
                               >
-                                <option selected="">Choose...</option>
-                                <option value={1}>Category 1</option>
-                                <option value={2}>Category 2</option>
-                                <option value={3}>Category 3</option>
+                                <option value=''>Choose Category</option>
+                                {category.map((item) => {
+                                  console.log(item.id, categoryid);
+                                  if (item.id == categoryid)
+                                    return (<option selected='selected' value={item['id']}>{item['title']}</option>)
+                                  else
+                                    return (<option value={item['id']}>{item['title']}</option>)
+                                })}
                               </select>
                             </div>
                             <div className="col-md-4">
@@ -121,6 +216,7 @@ export default function EditProduct() {
                               <input
                                 type="text"
                                 value={title}
+                                onChange={(e) => setTitle(e.target.value)} // Ensure the state is updated
                                 className="form-control"
                                 id="title"
                                 placeholder="Enter title"
@@ -135,6 +231,7 @@ export default function EditProduct() {
                                 type="number"
                                 className="form-control"
                                 id="price"
+                                onChange={(e) => setPrice(e.target.value)}
                                 value={price}
                                 placeholder="Enter price"
                                 required=""
@@ -150,10 +247,11 @@ export default function EditProduct() {
                                 className="form-control"
                                 id="details"
                                 rows={3}
+                                onChange={(e) => setDetail(e.target.value)}
                                 placeholder="Enter details"
                                 required=""
                                 defaultValue={detail}>
-                                
+
                               </textarea>
                             </div>
                           </div>
@@ -168,6 +266,7 @@ export default function EditProduct() {
                                 id="stock"
                                 placeholder="Enter stock quantity"
                                 required="" value={stock}
+                                onChange={(e) => setStock(e.target.value)}
                               />
                             </div>
                             <div className="col-md-4">
@@ -180,6 +279,7 @@ export default function EditProduct() {
                                 id="weight"
                                 placeholder="Enter weight"
                                 required="" value={weight}
+                                onChange={(e) => setWeight(e.target.value)}
                               />
                             </div>
                             <div className="col-md-4">
@@ -192,6 +292,7 @@ export default function EditProduct() {
                                 id="size" value={size}
                                 placeholder="Enter size"
                                 required=""
+                                onChange={(e) => setSize(e.target.value)}
                               />
                             </div>
                           </div>
@@ -205,6 +306,7 @@ export default function EditProduct() {
                                 className="form-control"
                                 id="photo"
                                 required=""
+                                onChange={(e) => setPhoto(e.target.files[0])}
                                 accept="image/*"
                               />
                             </div>
@@ -218,6 +320,7 @@ export default function EditProduct() {
                                   id="isLiveYes"
                                   defaultValue={1}
                                   required=""
+                                  checked={(isLive === '1') ? 'checked' : ''}
                                 />
                                 <label
                                   className="form-check-label"
@@ -234,6 +337,7 @@ export default function EditProduct() {
                                   id="isLiveNo"
                                   defaultValue={0}
                                   required=""
+                                  checked={(isLive === '0') ? 'checked' : ''}
                                 />
                                 <label
                                   className="form-check-label"
