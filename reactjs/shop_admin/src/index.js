@@ -34,7 +34,7 @@ function MyRouter()
             <Route path='forgot-password' element={<ForgotPassword />} />
             <Route path='print-orders' element={<PrintOrder />} />
             <Route path='users' element={<Users />} />
-            <Route path='view-order-detail' element={<ViewOrderDetail />} />
+            <Route path='view-order-detail/:orderid' element={<ViewOrderDetail />} />
             <Route path='view-product-detail/:productid' element={<ViewProductDetail />} />
             <Route path='dashboard' element={<DashBoard />} />
             <Route path='*' element={<FileNotFound />} />

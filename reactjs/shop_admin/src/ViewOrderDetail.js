@@ -1,7 +1,70 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import getBase, { NETWORK_ERROR } from "./common";
+import axios from "axios";
+import { showMessage } from "./message";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { ToastContainer } from "react-toastify";
 export default function ViewOrderDetail() {
+  //create variable to store input passed along with route 
+  let {orderid} = useParams();
+  let [billdate, setBillDate] = useState("");
+  let [orderstatus, setOrderStatus] = useState("");
+  let [id, setId] = useState("");
+  let [fullname, setFullName] = useState("");
+  let [address1, setAddress1] = useState("");
+  let [address2, setAddress2] = useState("");
+  let [city, setCity] = useState("");
+  let [pincode, setPincode] = useState("");
+  let [amount, setAmount] = useState("");
+
+  useEffect(() => {
+    //call api
+    let apiAddress = getBase() + "orders.php?id=" + orderid;
+
+    axios({
+      method:'get',
+      responseType:'json',
+      url:apiAddress,
+    }).then((response) =>{
+       console.log(response.data);
+       let error = response.data[0]['error'];
+       if(error !== 'no')
+          showMessage(error);
+       else 
+       {
+          let total = response.data[1]['total'];
+          if(total === 0)
+            showMessage('no orders found');
+          else 
+          {
+              response.data.splice(0,2);
+              //copy value into individual state variables
+              setAddress1(response.data[0]['address1']);
+              setAddress2(response.data[0]['address2']);
+              setAmount(response.data[0]['amount']);
+              setBillDate(response.data[0]['billdate']);
+              setCity(response.data[0]['city']);
+              setFullName(response.data[0]['fullname']);
+              setOrderStatus(response.data[0]['orderstatus']);
+              setId(response.data[0]['id']);
+              setFullName(response.data[0]['fullname']);
+              setPincode(response.data[0]['pincode']);
+              
+          }
+       }
+    }).catch((error) => {
+        if(error.code === 'ERR_NETWORK')
+        {
+            showMessage(NETWORK_ERROR);
+        }  
+    });
+});
+
   return (
     <div id="wrapper">
       <Sidebar />
@@ -38,22 +101,22 @@ export default function ViewOrderDetail() {
                       <tbody>
                         <tr>
                           <td width="25%">Name</td>
-                          <td width="25%">Ankit Patel</td>
+                          <td width="25%">{fullname}</td>
                           <td width="25%">Date</td>
-                          <td width="25%">Fri 09-08-2024</td>
+                          <td width="25%">{billdate}</td>
                         </tr>
                         <tr>
                           <td>Address</td>
                           <td>
-                            eva surbhi, opp akshwarwadi <br />
-                            Waghwadi road, bhavnagar
+                          {address1} <br />
+                            {address2}
                           </td>
                           <td>Bill No</td>
-                          <td>125</td>
+                          <td>{id}</td>
                         </tr>
                         <tr>
                           <td>Pincode</td>
-                          <td>364001</td>
+                          <td>{pincode}</td>
                           <td>Delivery Status</td>
                           <td>
                             <form action="">
