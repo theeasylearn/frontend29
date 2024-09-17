@@ -22,7 +22,11 @@ function MyRouter()
 {
     return (<BrowserRouter>
         <Routes>
+            {/* below 2 routes can be opend without login */}
             <Route index path='/' element={<AdminLogin />} />
+            <Route path='forgot-password' element={<ForgotPassword />} />
+
+            {/* all other routes must not open without login (login is required(compulsory)) */}
             <Route path='add-category' element={<AddCategory />} />
             <Route path='add-product' element={<AddProduct />} />
             <Route path='edit-category' element={<EditCategory/>} />
@@ -31,7 +35,6 @@ function MyRouter()
             <Route path='product' element={<Products />} />
             <Route path='change-password' element={<ChangePassword />} />
             <Route path='orders' element={<AdminOrders />} />
-            <Route path='forgot-password' element={<ForgotPassword />} />
             <Route path='print-orders' element={<PrintOrder />} />
             <Route path='users' element={<Users />} />
             <Route path='view-order-detail/:orderid' element={<ViewOrderDetail />} />

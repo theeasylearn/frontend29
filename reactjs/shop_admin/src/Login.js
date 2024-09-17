@@ -5,10 +5,16 @@ import { ToastContainer } from 'react-toastify';
 import { showMessage } from "./message";
 import 'react-toastify/dist/ReactToastify.css';
 import getBase, {NETWORK_ERROR} from "./common";
-export default function AdminLogin() {
+
+import {useCookies} from 'react-cookie';
+
+export default function AdminLogin() 
+{
   let [email,setEmail] = useState();
   let [password,setPassword] = useState();
   let navigate = useNavigate();
+  
+  let [cookies, setCookie, removeCookie] = useCookies(['theeasylearn']);
   
   let checkLogin = function(e)
   {
@@ -39,11 +45,14 @@ export default function AdminLogin() {
           else 
           {
             showMessage(message,'success');
+            //create cookie 
+            setCookie('adminid',response.data[3]['id']);
+            console.log(cookies['adminid']);
+
             //display another screen to user (dashboard)
             setTimeout(() => {
               navigate("/dashboard");
             },2000); //1000 miliseconds = 1 second
-
           }
         }
       }).catch((error) => {
