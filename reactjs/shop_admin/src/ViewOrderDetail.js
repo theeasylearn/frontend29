@@ -9,7 +9,10 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 export default function ViewOrderDetail() {
+  VerifyLogin();
+  
   //create variable to store input passed along with route 
   let {orderid} = useParams();
   let [billdate, setBillDate] = useState("");

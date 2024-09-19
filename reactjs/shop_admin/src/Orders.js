@@ -7,9 +7,12 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 
 //https://theeasylearnacademy.com/shop/ws/orders.php
 export default function AdminOrders() {
+  VerifyLogin();
+  
   let apiAddress = getBase() + "orders.php";
   //create state array
   let [orders,setOrders] = useState([]);

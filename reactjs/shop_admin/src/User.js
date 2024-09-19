@@ -1,8 +1,15 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
+import VerifyLogin from "./VerifyLogin";
+import { useEffect } from "react";
 //https://theeasylearnacademy.com/shop/ws/users.php
 export default function Users() {
+  VerifyLogin();
+  
+  useEffect(() => {
+
+  });
   return (
     <div id="wrapper">
       <Sidebar />

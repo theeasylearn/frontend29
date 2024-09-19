@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate,Link} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { showMessage } from "./message";
 import 'react-toastify/dist/ReactToastify.css';
@@ -108,9 +108,9 @@ export default function AdminLogin()
                     </form>
                     <hr />
                     <div className="text-center">
-                      <a className="small" href="forgot-password.html">
+                      <Link className="small" to="/forgot-password">
                         Forgot Password?
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

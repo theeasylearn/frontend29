@@ -6,7 +6,10 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 export default function DashBoard() {
+
+    VerifyLogin();
     var [category, setCategory] = useState();
     var [product, setProduct] = useState();
     var [users, setUsers] = useState();

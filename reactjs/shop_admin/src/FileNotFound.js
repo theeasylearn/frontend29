@@ -1,5 +1,9 @@
+import VerifyLogin from "./VerifyLogin"
+
 export default function FileNotFound()
 {
+    VerifyLogin();
+    
     return(
         <>
   <div id="wrapper" style={{'height':'100vh'}}>

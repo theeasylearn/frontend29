@@ -7,12 +7,13 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 //https://theeasylearnacademy.com/shop/ws/delete_product.php?id=1
 export default function Products() 
 {
   //create state array
   let [products,setProducts] = useState([]);
-
+  VerifyLogin();
   useEffect(() => {
       let apiAddress = getBase() + "product.php";
       axios({

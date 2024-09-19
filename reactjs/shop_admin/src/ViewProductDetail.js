@@ -7,7 +7,9 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 export default function ViewProductDetail() {
+  VerifyLogin();
   let { productid } = useParams();
   //create state variables
   let [title,setTitle] = useState();

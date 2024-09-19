@@ -6,6 +6,7 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 export default function AddProduct() {
     /* create state variables for each and every input */
     var [categoryId, setCategoryId] = useState(''); // For storing category ID
@@ -20,7 +21,8 @@ export default function AddProduct() {
     var navigate = useNavigate();
     //create state array to store categories 
     let [categories, setCategories] = useState([]);
-
+    VerifyLogin();
+    
     //fetch category from server after component is rendered 
     useEffect(() => {
         if (categories.length === 0) {

@@ -1,6 +1,8 @@
+import VerifyLogin from "./VerifyLogin";
 
 
 export default function PrintOrder() {
+  VerifyLogin();
   return (
     <>
       <h2 align="center">Bill</h2> <hr width="90%" />

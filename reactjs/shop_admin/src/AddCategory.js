@@ -6,14 +6,16 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 export default function AddCategory()
 {
+    VerifyLogin();
+    
     /* declare state variables for each and every input that will be given by user */
     let [title,setTitle] = useState('');
     let [photo,setPhoto] = useState('');
     let [islive,setIsLive] = useState('');
     let navigate = useNavigate();
-
     let saveCategory = function(e)
     {
         e.preventDefault();

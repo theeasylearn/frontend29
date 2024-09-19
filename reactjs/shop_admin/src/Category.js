@@ -7,10 +7,13 @@ import axios from "axios";
 import { showMessage } from "./message";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import VerifyLogin from "./VerifyLogin";
 
 export default function Category() {
     //create state array
     let [categories, setCategories] = useState([]); //[] create state array
+   
+    VerifyLogin(); 
     useEffect(() => {
         if (categories.length === 0) {
             let apiAddress = getBase() + "category.php";
@@ -41,6 +44,7 @@ export default function Category() {
             });
         }
     });
+    
     let deleteCategory = function(categoryid)
     {
         console.log(categoryid);

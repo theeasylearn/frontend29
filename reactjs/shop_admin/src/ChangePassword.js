@@ -1,7 +1,9 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
+import VerifyLogin from "./VerifyLogin";
 
 export default function ChangePassword() {
+  VerifyLogin();
   return (<div id="wrapper">
     <Sidebar />
     {/* Content Wrapper */}
