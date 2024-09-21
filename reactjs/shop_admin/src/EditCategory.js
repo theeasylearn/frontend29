@@ -1,7 +1,8 @@
 import AdminHeader from "./AdminHeader";
 import Sidebar from "./Sidebar";
 import VerifyLogin from "./VerifyLogin";
-
+//url update_category.php
+//input (id,title,photo,islive)
 export default function EditCategory() {
   VerifyLogin();
   
