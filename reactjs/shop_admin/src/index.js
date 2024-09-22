@@ -17,6 +17,7 @@ import ViewOrderDetail from './ViewOrderDetail.js';
 import ViewProductDetail from './ViewProductDetail.js';
 import FileNotFound from './FileNotFound.js';
 import DashBoard from './DashBoard.js';
+import Logout from './Logout.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function MyRouter()
 {
@@ -40,6 +41,7 @@ function MyRouter()
             <Route path='view-order-detail/:orderid' element={<ViewOrderDetail />} />
             <Route path='view-product-detail/:productid' element={<ViewProductDetail />} />
             <Route path='dashboard' element={<DashBoard />} />
+            <Route path='logout' element={<Logout />} />
             <Route path='*' element={<FileNotFound />} />
         </Routes>
     </BrowserRouter>)

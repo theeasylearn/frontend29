@@ -44,6 +44,9 @@ export default function ChangePassword() {
         else {
           let success = response.data[1]['success'];
           showMessage(response.data[2]['message'], 'success');
+          //delete cookie 
+          removeCookie('adminid');
+          
           if (success === 'yes') {
             //navigate to category route
             setTimeout(() => {
