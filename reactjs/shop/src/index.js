@@ -21,7 +21,7 @@ class Project extends React.Component {
                     <Route path="userlogin" element={<UserLogin />}></Route>
                     <Route index path="/" element={<Home />}></Route>
                     <Route path="product/:categoryid" element={<Product />}></Route>
-                    <Route path="productdetail" element={<ProductDetail />}></Route>
+                    <Route path="productdetail/:productid" element={<ProductDetail />}></Route>
                     <Route path="category" element={<Category />}></Route>
                     <Route path="cart" element={<Cart />}></Route>
                     <Route path="checkout" element={<Checkout />}></Route>

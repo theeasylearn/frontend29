@@ -78,7 +78,7 @@ class Product extends React.Component {
                                         <div className="card card-product shadow">
                                             <div className="card-body">
                                                 <div className="text-center position-relative">
-                                                    <Link to="/productdetail">
+                                                    <Link to={"/productdetail/" + item['id'] }>
                                                         <img src={getImageBase() + "product/" + item['photo']} alt="Grocery Ecommerce Template" className="mb-3 img-fluid" />
                                                     </Link>
                                                 </div>

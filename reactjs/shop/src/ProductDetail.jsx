@@ -4,7 +4,56 @@ import HeaderUser from "./HeaderUser";
 import NavbarUser from "./NavbarUser";
 import FooterUser from "./FooterUser";
 import { Link } from "react-router-dom";
-export default class ProductDetail extends React.Component {
+import withRouter from "./MyHOC";
+import getBase, { getImageBase, NETWORK_ERROR } from "./common";
+import axios from "axios";
+import { showMessage } from "./message";
+import { ToastContainer } from "react-toastify";
+
+class ProductDetail extends React.Component {
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            categorytitle:'',
+            title:'',
+            price:'',
+            stock:'',
+            photo:'',
+            detail:'',
+            weight:'',
+            size:''
+        }
+    }
+    componentDidMount()
+    {
+        let productid = this.props.params.productid;
+        //api call 
+        let apiAddress = getBase() + "product.php?productid=" + productid;
+        console.log(apiAddress);
+
+        axios({
+            method:'get',
+            responseType:'json',
+            url:apiAddress
+        }).then((response) => {
+            console.log(response.data);
+            this.setState({
+                categorytitle: response.data[2]['categorytitle'],
+                title: response.data[2]['categorytitle'],
+                price: response.data[2]['price'],
+                stock: response.data[2]['stock'],
+                photo: response.data[2]['photo'],
+                detail: response.data[2]['detail'],
+                weight: response.data[2]['weight'],
+                size: response.data[2]['size']
+            });
+
+        }).catch((error) => {
+            if(error.code === 'ERR_NETWORK')
+                showMessage(NETWORK_ERROR);
+        });
+    }
     render() {
         return (
             <div>
@@ -13,10 +62,11 @@ export default class ProductDetail extends React.Component {
                 <main>
                     <section className="my-lg-4">
                         <div className="container">
+                            <ToastContainer />
                             <div className="row">
                                 <div className="col-12">
                                     <div className="mb-8">
-                                        <h3 className="mb-0">IPhone - 15</h3>
+                                        <h3 className="mb-0">{this.state.title}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -28,16 +78,16 @@ export default class ProductDetail extends React.Component {
                                 <div className="col-md-5 col-xl-6">
                                     <div className="product" id="product">
                                         <div className="zoom" onmousemove="zoom(event)" style={{}}>
-                                            <img src="theme/assets/images/products/product-single-img-1.jpg" alt />
+                                            <img src={getImageBase() + "/product/" + this.state.photo} alt />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-md-7 col-xl-6">
                                     <div className="ps-lg-10 mt-6 mt-md-0">
-                                        <a href="#!" className="mb-4 d-block">IPhone</a>
-                                        <h1 className="mb-1">IPhone 15</h1>
+                                        <a href="#!" className="mb-4 d-block">{this.state.categorytitle}</a>
+                                        <h1 className="mb-1">{this.state.title}</h1>
                                         <div className="fs-4 d-flex justify-content-between mb-3">
-                                            <span className="fw-bold text-dark">₹ 1,25,000</span>
+                                            <span className="fw-bold text-dark">₹ {this.state.price}</span>
                                             <button type="button" className="btn btn-primary">
                                                 <i className="feather-icon icon-shopping-bag me-2" />
                                                 Add to cart
@@ -46,26 +96,23 @@ export default class ProductDetail extends React.Component {
                                         <div>
                                             <table className="table table-bordered table-sm">
                                                 <tbody>
-                                                    <tr>
-                                                        <td width="25%">Product Code:</td>
-                                                        <td />
-                                                    </tr>
+                                                 
                                                     <tr>
                                                         <td>Stock:</td>
-                                                        <td />
+                                                        <td>{this.state.stock}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Size:</td>
-                                                        <td />
+                                                        <td>{this.state.size}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Weight</td>
-                                                        <td />
+                                                        <td>{this.state.weight}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Detail:</td>
-                                                        <td>
-                                                        </td>
+                                                        <td>{this.state.stock}</td>
+                                                        
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -81,3 +128,4 @@ export default class ProductDetail extends React.Component {
         );
     }
 }
+export default withRouter(ProductDetail);
