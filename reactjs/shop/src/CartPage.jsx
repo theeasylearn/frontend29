@@ -4,7 +4,7 @@ import HeaderUser from "./HeaderUser";
 import NavbarUser from "./NavbarUser";
 import FooterUser from "./FooterUser";
 import { Link } from "react-router-dom";
-export default class CartPage extends React.Component {
+export default class Cart extends React.Component {
     render() {
         return (
             <div>

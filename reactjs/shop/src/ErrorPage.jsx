@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default class ErrorPage extends React.Component {
+export default class NoPageFound extends React.Component {
     render() {
         return (
             <main>
