@@ -8,6 +8,7 @@ import getBase, { NETWORK_ERROR, getImageBase } from "./common";
 import axios from 'axios';
 import { showMessage } from "./message";
 import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default class Category extends React.Component {
     constructor(props) {
         super(props);
