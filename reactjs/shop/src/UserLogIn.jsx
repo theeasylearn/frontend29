@@ -9,6 +9,7 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import withRouter from "./MyHOC";
 class UserLogin extends React.Component {
+    
     constructor(props)
     {
         super(props);
@@ -26,6 +27,42 @@ class UserLogin extends React.Component {
         e.preventDefault();
         console.log(this.state);
         //https://theeasylearnacademy.com/shop/ws/login.php
+        var apiAddress = getBase() + "login.php";
+        var form = new FormData();
+        form.append('email',this.state.email);
+        form.append('password',this.state.password);
+
+        axios({
+            method:'post',
+            responseType:'json',
+            url:apiAddress,
+            data:form
+        }).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if(error !== 'no')
+                showMessage(error);
+            else 
+            {
+                let success = response.data[1]['success'];
+                let message = response.data[2]['message'];
+                if(success !== 'yes')
+                    showMessage(message);
+                else 
+                {
+                    showMessage(message,'success');
+                    //create cookie
+                    this.props.setCookie('userid',response.data[3]['id']);
+                    // console.log(this.props.cookies['userid']);
+                    setTimeout(() => {
+                       this.props.navigate('/');
+                    },2000);
+                }
+            }
+        }).catch((error) => {
+            if (error.code === 'ERR_NETWORK')
+                showMessage(NETWORK_ERROR);
+        });
     }
     render() {
         return (
@@ -44,6 +81,7 @@ class UserLogin extends React.Component {
                 <main>
                     <section className="my-lg-14 my-8">
                         <div className="container">
+                            <ToastContainer />
                             <div className="row justify-content-center align-items-center">
                                 <div className="col-12 col-md-6 col-lg-4 order-lg-1 order-2">
                                     <img src="theme/assets/images/svg-graphics/signin-g.svg" alt className="img-fluid" />

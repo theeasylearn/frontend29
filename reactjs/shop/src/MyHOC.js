@@ -1,16 +1,26 @@
-//hoc means Higher order component
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie'; // Import useCookies
 
 // Higher Order Component
-const withRouter = (Component) => {
+const withRouterAndCookies = (Component) => {
     return (props) => {
-        const params = useParams();
-        const navigate = useNavigate();
+        let params = useParams();
+        let navigate = useNavigate();
+        let [cookies, setCookie, removeCookie] = useCookies('theasylearn'); // Use cookies
 
-        // Pass params and navigate to the wrapped component as props
-        return <Component {...props} params={params} navigate={navigate} />;
+        // Pass params, navigate, and cookies to the wrapped component as props
+        return (
+            <Component 
+                {...props} 
+                params={params} 
+                navigate={navigate} 
+                cookies={cookies} 
+                setCookie={setCookie} 
+                removeCookie={removeCookie}
+            />
+        );
     };
 };
 
-export default withRouter;
+export default withRouterAndCookies;

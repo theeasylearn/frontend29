@@ -1,6 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default class NavbarUser extends React.Component {
+import withRouter from "./MyHOC";
+
+class NavbarUser extends React.Component {
+    MenuItemForUser = () => {
+        return (<>
+            <li className="nav-item">
+                <Link className="nav-link" to="/cart">Cart</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/checkout">Checkout</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="#">Logout</Link>
+            </li></>);
+
+    }
+
+    MenuItemforGuest = () => {
+        return (<>
+            <li className="nav-item">
+                <Link className="nav-link" to="/userregister">Register</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" to="/userlogin">Login</Link>
+            </li>
+
+        </>);
+    }
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary py-0 py-lg-2 navbar-default">
@@ -19,22 +46,8 @@ export default class NavbarUser extends React.Component {
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/category">Shop</Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/cart">Cart</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/checkout">Checkout</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="#">Logout</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/userregister">Register</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to="/userlogin">Login</Link>
-                                    </li>
-                                    
+                                    {this.MenuItemForUser()}
+                                    {this.MenuItemforGuest()}
                                 </ul>
                             </div>
                         </div>
@@ -44,3 +57,4 @@ export default class NavbarUser extends React.Component {
         );
     }
 }
+export default withRouter(NavbarUser);
