@@ -3,30 +3,37 @@ import { Link } from "react-router-dom";
 import withRouter from "./MyHOC";
 
 class NavbarUser extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     MenuItemForUser = () => {
-        return (<>
-            <li className="nav-item">
-                <Link className="nav-link" to="/cart">Cart</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/checkout">Checkout</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="#">Logout</Link>
-            </li></>);
+        if (this.props.cookies['userid'] !== undefined) {
+            return (<>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/cart">Cart</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/checkout">Checkout</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/logout">Logout</Link>
+                </li></>);
+        }
 
     }
 
     MenuItemforGuest = () => {
-        return (<>
-            <li className="nav-item">
-                <Link className="nav-link" to="/userregister">Register</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link" to="/userlogin">Login</Link>
-            </li>
+        if (this.props.cookies['userid'] === undefined) {
+            return (<>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/userregister">Register</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/userlogin">Login</Link>
+                </li>
 
-        </>);
+            </>);
+        }
     }
     render() {
         return (

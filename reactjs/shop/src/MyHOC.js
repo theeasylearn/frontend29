@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'; // Import useCookies
 
 // Higher Order Component
-const withRouterAndCookies = (Component) => {
+const withRouter = (Component) => {
     return (props) => {
         let params = useParams();
         let navigate = useNavigate();
@@ -23,4 +23,4 @@ const withRouterAndCookies = (Component) => {
     };
 };
 
-export default withRouterAndCookies;
+export default withRouter;

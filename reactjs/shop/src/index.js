@@ -9,6 +9,7 @@ import ProductDetail from "./ProductDetail";
 import Category from "./CategoryPage";
 import Cart from "./CartPage";
 import Checkout from "./Checkout";
+import Logout from "./Logout";
 import Forgotpassword from "./Forgotpassword";
 import UserRegister from "./UserRegister";
 import NoPageFound from "./ErrorPage";
@@ -27,6 +28,7 @@ class Project extends React.Component {
                     <Route path="checkout" element={<Checkout />}></Route>
                     <Route path="forgotpassword" element={<Forgotpassword />}></Route>
                     <Route path="userregister" element={<UserRegister />}></Route>
+                    <Route path="logout" element={<Logout />}></Route>
                     <Route path="*" element={<NoPageFound />}></Route>
                 </Routes>
             </BrowserRouter>

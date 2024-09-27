@@ -52,6 +52,32 @@ class Product extends React.Component {
                 showMessage(NETWORK_ERROR);
         });
     }
+
+    addtoCart = (productid) =>
+    {
+        let userid = this.props.cookies['userid'];
+        let apiAddress = getBase() + `add_to_cart.php?usersid=${userid}&productid=${productid}`;
+        console.log(apiAddress);
+        axios({
+            method:'get',
+            responseType:'json',
+            url:apiAddress
+        }).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if(error !== 'no')
+                showMessage(error);
+            else 
+            {
+                let message = response.data[1]['message'];
+                showMessage(message,'success');
+            }
+        }).catch((error) =>
+        {
+            if (error.code === 'ERR_NETWORK')
+                showMessage(NETWORK_ERROR);
+        });
+    }    
     render() {
         return (
             <div>
@@ -90,7 +116,7 @@ class Product extends React.Component {
                                                         <span className="text-dark">{item['price']}</span>
                                                     </div>
                                                     <div>
-                                                        <button href="#!" className="btn btn-primary btn-sm">
+                                                        <button href="#!" className="btn btn-primary btn-sm" onClick={() => this.addtoCart(item['id'])}>
                                                             Add to cart
                                                         </button>
                                                     </div>
