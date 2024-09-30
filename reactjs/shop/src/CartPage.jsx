@@ -21,10 +21,45 @@ class Cart extends React.Component {
         }
     }
     removeFromCart = (item) => {
+       
         //api call to delete item from cart 
-        //remove item from data state array
-        //update grandTotal
         let apiAddress = getBase() + `delete_from_cart.php?cartid=${item['cartid']}`;
+        axios({
+            method:'get',
+            responseType:'json',
+            url:apiAddress
+        }).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if(error !== 'no')
+                showMessage(error);
+            else 
+            {
+                //remove item from data state array
+                let temptotal = 0;
+                let temp = this.state.data.filter((current) => {
+                    if(current['cartid'] !== item['cartid'])
+                    {
+                        return current;
+                    } 
+                    else 
+                    {
+                        temptotal = item['price'] * item['quantity'];
+                    }   
+                });
+                this.props.setCookie('grandtotal',this.state.grandTotal - temptotal);
+                this.setState({
+                    data : temp, 
+                    //update grandTotal
+                    grandTotal: this.state.grandTotal - temptotal,
+                });
+                let message = response.data[1]['message'];
+                showMessage(message,'success');
+            }
+        }).catch((error) => {
+            if (error.code === 'ERR_NETWORK')
+                showMessage(NETWORK_ERROR);
+        })
     }
     componentDidMount()
     {
@@ -58,12 +93,13 @@ class Cart extends React.Component {
                     this.setState({
                         data: response.data
                     },()=> {
-                        let temp =0
+                        let temp =0; //temp variable store grandtotal
                         this.state.data.map((item) => {
                             temp = temp + (item['price'] * item['quantity']);
                         });
+                        this.props.setCookie('grandtotal',temp);
                         this.setState({
-                            grandTotal:temp
+                            grandTotal:temp,
                         });
                     });
                     
@@ -135,7 +171,7 @@ class Cart extends React.Component {
                              {this.state.data.map((item) => this.displayCart(item))}
                             </div>
                             <div className="d-flex justify-content-between">
-                                <button type="button" className="btn btn-primary">Proceed to checkout</button>
+                                <Link to='/checkout' className="btn btn-primary">Proceed to checkout</Link>
                                 <h3>Grand total {this.state.grandTotal}</h3>
                             </div>
                         </div>

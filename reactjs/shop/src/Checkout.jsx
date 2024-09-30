@@ -4,7 +4,30 @@ import FooterUser from "./FooterUser";
 import HeaderUser from "./HeaderUser";
 import NavbarUser from "./NavbarUser";
 import { Link } from "react-router-dom";
-export default class Checkout extends React.Component {
+import withRouter from "./MyHOC";
+class Checkout extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fullName: '',
+            mobile: '',
+            addressLine1: '',
+            addressLine2: '',
+            city: '',
+            zipCode: '',
+            remarks: ''
+        };
+    }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
+
+    doCheckout = (e) => {
+        console.log(this.state);
+        e.preventDefault();
+    }
     render() {
         return (
             <div>
@@ -28,32 +51,85 @@ export default class Checkout extends React.Component {
                                 <div className="col-lg-9">
                                     <div className="card shadow">
                                         <div className="card-body">
-                                            <form action>
+                                            <form onSubmit={this.doCheckout}>
                                                 <div className="row g-3">
                                                     <div className="col-12">
-                                                        <input type="text" className="form-control" placeholder="fullname" aria-label="First name" required />
+                                                        <input
+                                                            type="text"
+                                                            name="fullName"
+                                                            className="form-control"
+                                                            placeholder="Full Name"
+                                                            aria-label="First name"
+                                                            value={this.state.fullName}
+                                                            onChange={this.handleChange}
+                                                            required
+                                                        />
                                                     </div>
                                                     <div className="col-12">
-                                                        <input type="tel" className="form-control" placeholder="mobile" aria-label="Last name" required />
+                                                        <input
+                                                            type="tel"
+                                                            name="mobile"
+                                                            className="form-control"
+                                                            placeholder="Mobile"
+                                                            aria-label="Last name"
+                                                            value={this.state.mobile}
+                                                            onChange={this.handleChange}
+                                                            required
+                                                        />
                                                     </div>
                                                     <div className="col-12">
-                                                        <input type="text" className="form-control" placeholder="Address Line 1" />
+                                                        <input
+                                                            type="text"
+                                                            name="addressLine1"
+                                                            className="form-control"
+                                                            placeholder="Address Line 1"
+                                                            value={this.state.addressLine1}
+                                                            onChange={this.handleChange}
+                                                        />
                                                     </div>
                                                     <div className="col-12">
-                                                        <input type="text" className="form-control" placeholder="Address Line 2" />
+                                                        <input
+                                                            type="text"
+                                                            name="addressLine2"
+                                                            className="form-control"
+                                                            placeholder="Address Line 2"
+                                                            value={this.state.addressLine2}
+                                                            onChange={this.handleChange}
+                                                        />
                                                     </div>
                                                     <div className="col-12">
-                                                        <input type="text" className="form-control" placeholder="City" />
+                                                        <input
+                                                            type="text"
+                                                            name="city"
+                                                            className="form-control"
+                                                            placeholder="City"
+                                                            value={this.state.city}
+                                                            onChange={this.handleChange}
+                                                        />
                                                     </div>
                                                     <div className="col-12">
-                                                        <input type="text" className="form-control" placeholder="Zip Code" />
+                                                        <input
+                                                            type="text"
+                                                            name="zipCode"
+                                                            className="form-control"
+                                                            placeholder="Zip Code"
+                                                            value={this.state.zipCode}
+                                                            onChange={this.handleChange}
+                                                        />
                                                     </div>
                                                     <div className="col-12">
-                                                        <input type="text" className="form-control" placeholder="Remarks" />
+                                                        <input
+                                                            type="text"
+                                                            name="remarks"
+                                                            className="form-control"
+                                                            placeholder="Remarks"
+                                                            value={this.state.remarks}
+                                                            onChange={this.handleChange}
+                                                        />
                                                     </div>
                                                     <div className="col-12 text-end">
                                                         <button type="button" className="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
-                                                        <button className="btn btn-primary" type="button">Place Order</button>
+                                                        <button type='submit' className="btn btn-primary">Place Order</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -68,7 +144,7 @@ export default class Checkout extends React.Component {
                                         <li className="list-group-item px-4 py-3">
                                             <div className="d-flex align-items-center justify-content-between mb-2">
                                                 <div>Item Subtotal</div>
-                                                <div className="fw-bold">375000</div>
+                                                <div className="fw-bold">{this.props.cookies['grandtotal']}</div>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">
                                                 <div>
@@ -81,7 +157,7 @@ export default class Checkout extends React.Component {
                                         <li className="list-group-item px-4 py-3">
                                             <div className="d-flex align-items-center justify-content-between fw-bold">
                                                 <div>Total</div>
-                                                <div>375000</div>
+                                                <div>{this.props.cookies['grandtotal']}</div>
                                             </div>
                                         </li>
                                     </ul>
@@ -95,3 +171,4 @@ export default class Checkout extends React.Component {
         );
     }
 }
+export default withRouter(Checkout);
