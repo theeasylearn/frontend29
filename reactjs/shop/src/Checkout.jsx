@@ -1,11 +1,15 @@
 import React from "react";
-
 import FooterUser from "./FooterUser";
 import HeaderUser from "./HeaderUser";
 import NavbarUser from "./NavbarUser";
-import { Link } from "react-router-dom";
 import withRouter from "./MyHOC";
-class Checkout extends React.Component {
+import getBase, { NETWORK_ERROR } from "./common";
+import axios from 'axios';
+import { showMessage } from "./message";
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+class Checkout extends React.Component
+{
     constructor(props) {
         super(props);
         this.state = {
@@ -27,6 +31,48 @@ class Checkout extends React.Component {
     doCheckout = (e) => {
         console.log(this.state);
         e.preventDefault();
+        let apiAddress = getBase() + "checkout.php";
+        let form = new FormData();
+        //input : usersid,fullname,address1,address2,mobile,city,pincode,remarks (required)
+       
+        form.append("usersid",this.props.cookies['userid']);
+        form.append("fullname",this.state.fullName);
+        form.append("address1",this.state.addressLine1);
+        form.append("address2",this.state.addressLine2);
+        form.append("mobile",this.state.mobile);
+        form.append("city",this.state.city);
+        form.append("pincode",this.state.pincode);
+        form.append("remarks",this.state.remarks);
+        
+        axios({
+            method:'post',
+            responseType:'json',
+            url:apiAddress,
+            data:form
+        }).then((response) => {
+            console.log(response.data);
+            let error = response.data[0]['error'];
+            if(error!=='no')
+                showMessage(error);
+            else 
+            {
+                let success = response.data[1]['success'];
+                let message = response.data[2]['message'];
+                if(success === 'no')
+                    showMessage(message);
+                else 
+                {
+                    showMessage(message,'success');
+                    setTimeout(() => {
+                        this.props.navigate("/");
+                    }, 2000);
+                }
+            }
+        }).catch((error) => {
+            if (error.code === 'ERR_NETWORK')
+                showMessage(NETWORK_ERROR);
+        });
+
     }
     render() {
         return (
@@ -35,6 +81,7 @@ class Checkout extends React.Component {
                 <NavbarUser />
                 <main>
                     <section className="my-lg-4">
+                        <ToastContainer />
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
