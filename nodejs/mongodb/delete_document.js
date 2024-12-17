@@ -1,14 +1,12 @@
 var connection = require('./connection.js').database;
-
-var object = {source:'Bhavnagar',destination:'sabarkantha',distance:180.25};
-
+var condition = {source:'Bhavnagar'};
 connection.then((db) => {
         var dbInstance = db.db('frontend29');
-        dbInstance.collection('data').insertOne(object, function (error, response) {
+        dbInstance.collection('data').deleteMany(condition, function (error, response) {
             if (error != null) {
-                console.log('There is some error in inserting the document:', error.message);
+                console.log('There is some error in deleting document:', error.message);
             } else {
-                console.log('Document has been inserted successfully:', response.insertedId);
+                console.log('Documents has been deleted successfully:');
             }
             db.close(); // Close the connection after the operation
         });
