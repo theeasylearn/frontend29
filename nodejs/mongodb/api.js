@@ -1,7 +1,13 @@
 var express = require('express');
 var connection = require('./connection.js').database;
+var bodyParser = require("body-parser");
 var app = express();
+//define middleware for accessing input.
+app.use(express.urlencoded({ 'extended': true }))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json());
 
+const ROUTE = '/data'; //READ ONLY VARIABLE
 //define route 
 //purpose get all data 
 //localhost:5000/data
@@ -14,7 +20,7 @@ var app = express();
 //example
 // http://localhost:5000/data/Bhavnagar/surat
 
-app.get('/data/:source?/:destination?', function (request, response) {
+app.get(ROUTE + '/:source?/:destination?', function (request, response) {
     console.log(request.params.source);
     connection.then((db) => {
         var dbInstance = db.db('frontend29');
@@ -45,6 +51,30 @@ app.get('/data/:source?/:destination?', function (request, response) {
         });
 });
 
+//purpose to insert new document into collection
+//example
+// http://localhost:5000/data
+// method post
+//content-type application/json
+//body
+// [{"name":"Book 1","author":"Author 1","price":25.99,"isbn":"978-1234567890"},{"name":"Book 2","author":"Author 2","price":19.95,"isbn":"978-0987654321"}]
+app.post(ROUTE,function(request,response){
+    connection.then((db) => {
+        var dbInstance = db.db('frontend29');
+        var object = request.body;
+        dbInstance.collection('data').insertMany(object, function (error, res) {
+            if (error != null) {
+                response.json([{ 'error': 'error occurred' }]);
+                console.log(error.errmsg);
+            } else {
+                response.json([{ 'error': 'no'},{'message':'Document has been inserted successfully'}]);
+            }
+        });
+    })
+    .catch((error) => {
+        response.json([{ 'error': 'error occurred while connecting to database...' }]);
+    });
+})
 
 app.listen(5000);
 console.log('ready to accept request...');
